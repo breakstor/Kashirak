@@ -1,0 +1,212 @@
+/* 1. التأسيس والخط */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+:root {
+    --primary-green: #16a34a;
+    --primary-green-hover: #15803d;
+    --primary-green-light: #dcfce7;
+
+    --dark-navy: #0f172a;
+    --font-main: 'Tajawal', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-main);
+}
+
+body { background: white; overflow-x: hidden; line-height: 1.6; }
+
+/* 2. الهيدر */
+.main-header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0; width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+}
+
+.header-flex { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+.logo { 
+    font-size: 26px; 
+    font-weight: 900; 
+    color: var(--primary-green); 
+    text-decoration: none;
+}
+
+.btn-primary { 
+    background: var(--primary-green); 
+    color: white; 
+    padding: 10px 25px; 
+    border-radius: 50px; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-green-hover);
+}
+
+/* 3. الهيرو */
+.hero {
+    padding-top: 120px;
+    background: linear-gradient(to bottom, #f0fdf4, #ffffff);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--dark-navy);
+    margin-bottom: 10px;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 40px;
+}
+
+/* 4. الهاتف */
+.phone-container {
+    position: relative;
+    width: 380px;
+    margin: 0 auto -220px; 
+    z-index: 100;
+}
+
+@media (min-width: 768px) {
+    .phone-container {
+        width: 500px;
+        margin-bottom: -300px;
+    }
+}
+
+.phone-frame { width: 100%; height: auto; display: block; position: relative; z-index: 10; }
+
+.screen {
+    position: absolute;
+    top: 2.1%; 
+    left: 5.8%;
+    width: 88.6%;
+    height: 95.8%;
+    background: #000;
+    border-radius: 45px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.slider { display: flex; width: 100%; height: 100%; }
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    flex-shrink: 0;
+}
+
+/* 5. الفيتشرز */
+.features {
+    background-color: var(--dark-navy);
+    color: white;
+    padding: 280px 0 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    font-weight: 800;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feature-card:hover {
+    transform: translateY(-12px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-green);
+}
+
+.feature-card .icon {
+    font-size: 45px;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.feature-card h3 { margin-bottom: 15px; font-size: 1.3rem; }
+.feature-card p { color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; }
+
+/* 6. التحميل */
+.download-section {
+    padding: 100px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-download-big {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--primary-green);
+    color: white;
+    padding: 18px 50px;
+    border-radius: 18px;
+    text-decoration: none;
+    box-shadow: 0 15px 30px rgba(22, 163, 74, 0.25);
+    transition: 0.3s;
+}
+
+.btn-download-big:hover { 
+    transform: scale(1.03);
+    background: var(--primary-green-hover);
+}
+
+.btn-download-big .main-text { 
+    font-size: 1.3rem; 
+    font-weight: 800; 
+}
+
+.footer { 
+    background: #020617; 
+    color: #94a3b8; 
+    text-align: center; 
+    padding: 30px 0; 
+    font-size: 0.9rem; 
+}
