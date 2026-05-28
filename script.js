@@ -1,57 +1,211 @@
-// انتظار تحميل محتوى الصفحة بالكامل
-document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('slider');
-    const slides = document.querySelectorAll('.slider img');
-    
-    // إعدادات السلايدر
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-    const intervalTime = 3000; // التغيير كل 3 ثواني
+// =========================================================
+// KASHIERK LANDING PAGE SCRIPT
+// =========================================================
 
-    /**
-     * وظيفة تحريك السلايدر
-     */
-    function updateSlider() {
-        // في المواقع التي تستخدم dir="rtl"، المتصفح يتعامل مع المحاور بشكل مختلف
-        // القيمة index * 100 تعني تحريك السلايدر بنسبة مئوية بناءً على رقم الصورة
-        const movePercentage = currentIndex * 100;
-        slider.style.transform = `translateX(${movePercentage}%)`;
+// =========================================================
+// SLIDER
+// =========================================================
+
+const slider =
+document.getElementById("slider");
+
+let currentSlide = 0;
+
+const slides =
+slider.querySelectorAll("img");
+
+const totalSlides =
+slides.length;
+
+// تغيير تلقائي للصور
+
+setInterval(() => {
+
+    currentSlide++;
+
+    if (currentSlide >= totalSlides) {
+
+        currentSlide = 0;
     }
 
-    /**
-     * الانتقال للصورة التالية
-     */
-    function nextSlide() {
-        currentIndex++;
-        
-        // إذا وصلنا لآخر صورة، نعود للبداية
-        if (currentIndex >= totalSlides) {
-            currentIndex = 0;
+    updateSlider();
+
+}, 3000);
+
+// تحديث السلايدر
+
+function updateSlider() {
+
+    slider.style.transform =
+    `translateX(${currentSlide * 100}%)`;
+}
+
+// =========================================================
+// HEADER EFFECT
+// =========================================================
+
+const header =
+document.querySelector(".main-header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 40) {
+
+        header.style.background =
+        "rgba(255,255,255,0.98)";
+
+        header.style.boxShadow =
+        "0 10px 30px rgba(0,0,0,0.05)";
+
+    }
+
+    else {
+
+        header.style.background =
+        "rgba(255,255,255,0.92)";
+
+        header.style.boxShadow =
+        "none";
+    }
+
+});
+
+// =========================================================
+// REVEAL ANIMATION
+// =========================================================
+
+const revealItems =
+document.querySelectorAll(
+`
+.feature-card,
+.workflow-card,
+.business-card,
+.about-box
+`
+);
+
+const observer =
+new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
         }
-        
-        updateSlider();
-    }
 
-    // تشغيل الحركة التلقائية
-    let slideInterval = setInterval(nextSlide, intervalTime);
-
-    // تحسين: إيقاف الحركة مؤقتاً عند وضع الماوس على الهاتف (اختياري)
-    const phoneContainer = document.querySelector('.phone-container');
-    if (phoneContainer) {
-        phoneContainer.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-        });
-
-        phoneContainer.addEventListener('mouseleave', () => {
-            slideInterval = setInterval(nextSlide, intervalTime);
-        });
-    }
-
-    // معالجة الأخطاء في حال عدم تحميل الصور (اختياري)
-    slides.forEach(img => {
-        img.onerror = function() {
-            console.error("فشل في تحميل الصورة: " + this.src);
-            this.style.display = 'none'; // إخفاء الصورة المكسورة
-        };
     });
+
+}, {
+    threshold: 0.15
+});
+
+revealItems.forEach((item) => {
+
+    item.classList.add("hidden");
+
+    observer.observe(item);
+
+});
+
+// =========================================================
+// MOBILE TOUCH SUPPORT
+// =========================================================
+
+let startX = 0;
+let endX = 0;
+
+const phoneScreen =
+document.querySelector(".screen");
+
+phoneScreen.addEventListener(
+"touchstart",
+(e) => {
+
+    startX = e.touches[0].clientX;
+
+});
+
+phoneScreen.addEventListener(
+"touchend",
+(e) => {
+
+    endX = e.changedTouches[0].clientX;
+
+    handleSwipe();
+
+});
+
+function handleSwipe() {
+
+    // سحب لليسار
+
+    if (startX - endX > 50) {
+
+        currentSlide++;
+
+        if (currentSlide >= totalSlides) {
+
+            currentSlide = 0;
+        }
+    }
+
+    // سحب لليمين
+
+    else if (endX - startX > 50) {
+
+        currentSlide--;
+
+        if (currentSlide < 0) {
+
+            currentSlide =
+            totalSlides - 1;
+        }
+    }
+
+    updateSlider();
+}
+
+// =========================================================
+// SMOOTH BUTTON EFFECT
+// =========================================================
+
+const buttons =
+document.querySelectorAll(
+".btn-primary, .btn-download-big"
+);
+
+buttons.forEach((button) => {
+
+    button.addEventListener(
+    "mouseenter",
+    () => {
+
+        button.style.transform =
+        "translateY(-2px)";
+    });
+
+    button.addEventListener(
+    "mouseleave",
+    () => {
+
+        button.style.transform =
+        "translateY(0)";
+    });
+
+});
+
+// =========================================================
+// PARALLAX EFFECT
+// =========================================================
+
+window.addEventListener("scroll", () => {
+
+    const scrollY = window.scrollY;
+
+    const phone =
+    document.querySelector(".phone-container");
+
+    phone.style.transform =
+    `translateY(${scrollY * 0.03}px)`;
 });
