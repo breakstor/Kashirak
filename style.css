@@ -768,7 +768,23 @@ body {
 
     transform: scale(1.03);
 }
+.download-buttons {
 
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-top: 30px;
+}
+
+.download-buttons .btn-download-big {
+
+    min-width: 280px;
+}
 /* =========================================================
    FOOTER
    ========================================================= */
@@ -883,4 +899,8 @@ body {
 
         width: 100%;
     }
+   .download-buttons {
+
+    flex-direction: column;
+}
 }
