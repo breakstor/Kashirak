@@ -1,519 +1,93 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html>
 <head>
+  <base href="/">
 
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="تسوق بسهولة من متجرك المفضل">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" id="apple-title" content="كافي أونلاين">
+  <link rel="apple-touch-icon" id="apple-icon" href="icons/Icon-192.png">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-    <title>
-        كاشيرك | نظام الكاشير الذكي للمحلات والمطاعم
-    </title>
+  <title id="page-title">كافي أونلاين</title>
+  <link rel="manifest" id="manifest-placeholder" href="manifest.json">
 
-    <meta name="description"
-          content="كاشيرك نظام كاشير احترافي يعمل بالكامل من الهاتف أو التابلت مع دعم العمل أوفلاين وإدارة المبيعات والتقارير والإشعارات البنكية.">
+  <script>
+    (async function() {
+      try {
+        const slug = window.location.pathname.replace(/^\//, '').split('/')[0];
+        if (!slug) return;
 
-    <link rel="stylesheet"
-          href="style.css">
+        const SUPABASE_URL = 'https://kmkthmaztyhhvxkousmd.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtva3RobWF6dHloaHZ4a291c21kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM2ODcyMzIsImV4cCI6MjA1OTI2MzIzMn0.dFwjCmf7P4WpfFCwJG-IzVkPAl7ZzWVQqxuR4LFkKR8';
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+        const res = await fetch(
+          ${SUPABASE_URL}/rest/v1/store_settings?slug=eq.&select=store_name,logo_url,slug&limit=1,
+          {
+            headers: {
+              'apikey': SUPABASE_KEY,
+              'Authorization': 'Bearer ' + SUPABASE_KEY,
+            }
+          }
+        );
+        const data = await res.json();
+        if (!data || data.length === 0) return;
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+        const store = data[0];
+        const storeName = store.store_name || 'كافي أونلاين';
+        const logoUrl = store.logo_url || null;
+        const storeSlug = store.slug || slug;
+        const startUrl = '/' + storeSlug;
 
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
-          rel="stylesheet">
+        // Update page title and apple meta
+        document.getElementById('page-title').textContent = storeName;
+        document.getElementById('apple-title').setAttribute('content', storeName);
+        if (logoUrl) {
+          document.getElementById('apple-icon').setAttribute('href', logoUrl);
+        }
 
+        // Build dynamic manifest
+        const icons = logoUrl
+          ? [
+              { src: logoUrl, sizes: '192x192', type: 'image/png' },
+              { src: logoUrl, sizes: '512x512', type: 'image/png' },
+              { src: logoUrl, sizes: '192x192', type: 'image/png', purpose: 'maskable' },
+              { src: logoUrl, sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+            ]
+          : [
+              { src: 'icons/Icon-192.png', sizes: '192x192', type: 'image/png' },
+              { src: 'icons/Icon-512.png', sizes: '512x512', type: 'image/png' }
+            ];
+
+        const manifest = {
+          name: storeName,
+          short_name: storeName,
+          start_url: startUrl,
+          display: 'standalone',
+          background_color: '#ffffff',
+          theme_color: '#ffffff',
+          description: 'تسوق بسهولة من متجرك المفضل',
+          orientation: 'portrait-primary',
+          prefer_related_applications: false,
+          lang: 'ar',
+          dir: 'rtl',
+          icons: icons
+        };
+
+        const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+        const manifestUrl = URL.createObjectURL(blob);
+        document.getElementById('manifest-placeholder').setAttribute('href', manifestUrl);
+      } catch (e) {
+        console.warn('[PWA Manifest] Could not load dynamic manifest:', e);
+      }
+    })();
+  </script>
 </head>
-
 <body>
-
-    <!-- HEADER -->
-
-    <header class="main-header">
-
-        <div class="container header-flex">
-
-            <div class="logo">
-                كاشيرك
-            </div>
-
-            <nav>
-
-                <a href="#final-download"
-                   class="btn-primary">
-
-                    تحميل التطبيق
-
-                </a>
-
-            </nav>
-
-        </div>
-
-    </header>
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="container text-center">
-
-            <div class="brand-inline">
-
-                <h1>
-                    نظام كاشير احترافي يعمل بالكامل من هاتفك
-                </h1>
-
-            </div>
-
-            <p class="hero-desc">
-
-                إدارة المبيعات والمخزون والفواتير بسهولة كاملة
-                مع دعم العمل بدون إنترنت للمحلات التجارية
-                والمطاعم والصيدليات.
-
-            </p>
-            
-<div class="hero-buttons">
-
-    <a href="#final-download"
-       class="primary-btn">
-
-        تحميل التطبيق
-
-    </a>
-
-    <a href="tutorial/index.html"
-       class="secondary-btn">
-
-        مشاهدة الشروحات
-
-    </a>
-
-</div>
-            <!-- BADGES -->
-
-            <div class="hero-badges">
-
-                <span class="badge">
-                    ⚡ بيع سريع
-                </span>
-
-                <span class="badge">
-                    📶 أوفلاين بالكامل
-                </span>
-
-                <span class="badge">
-                    📱 هاتف وتابلت
-                </span>
-
-                <span class="badge">
-                    📊 تقارير احترافية
-                </span>
-
-            </div>
-
-            <!-- PHONE -->
-
-            <div class="phone-container">
-
-                <img src="Images/iphone_frame.png"
-                     class="phone-frame"
-                     alt="iPhone Frame">
-
-                <div class="screen">
-
-                    <div class="slider"
-                         id="slider">
-
-                        <img src="screenshot/slide1.jpg" alt="">
-                        <img src="screenshot/slide2.jpg" alt="">
-                        <img src="screenshot/slide3.jpg" alt="">
-                        <img src="screenshot/slide4.jpg" alt="">
-                        <img src="screenshot/slide5.jpg" alt="">
-                        <img src="screenshot/slide6.jpg" alt="">
-                        <img src="screenshot/slide7.jpg" alt="">
-                        <img src="screenshot/slide8.jpg" alt="">
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- FEATURES -->
-
-    <section class="features"
-             id="features">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>
-                    كل ما تحتاجه لإدارة متجرك
-                </h2>
-
-            </div>
-
-            <div class="features-grid">
-
-                <div class="feature-card">
-
-                    <span class="icon">
-                        ⚡
-                    </span>
-
-                    <h3>
-                        عمليات بيع سريعة
-                    </h3>
-
-                    <p>
-                        واجهة كاشير بسيطة وسريعة
-                        لتسهيل عمليات البيع اليومية.
-                    </p>
-
-                </div>
-
-                <div class="feature-card">
-
-                    <span class="icon">
-                        📶
-                    </span>
-
-                    <h3>
-                        أوفلاين بالكامل
-                    </h3>
-
-                    <p>
-                        يعمل التطبيق بدون إنترنت
-                        لضمان استمرارية العمل.
-                    </p>
-
-                </div>
-
-                <div class="feature-card">
-
-                    <span class="icon">
-                        📊
-                    </span>
-
-                    <h3>
-                        تقارير احترافية
-                    </h3>
-
-                    <p>
-                        متابعة المبيعات والأرباح
-                        والمنتجات بشكل احترافي.
-                    </p>
-
-                </div>
-
-                <div class="feature-card">
-
-                    <span class="icon">
-                        🔔
-                    </span>
-
-                    <h3>
-                        فحص الإشعارات البنكية
-                    </h3>
-
-                    <p>
-                        تحليل التحويلات البنكية
-                        ومطابقة المدفوعات بسهولة.
-                    </p>
-
-                </div>
-
-                <div class="feature-card">
-
-                    <span class="icon">
-                        🧾
-                    </span>
-
-                    <h3>
-                        الفواتير والطباعة
-                    </h3>
-
-                    <p>
-                        دعم الطابعات الحرارية
-                        والفواتير والباركود.
-                    </p>
-
-                </div>
-
-                <div class="feature-card">
-
-                    <span class="icon">
-                        👥
-                    </span>
-
-                    <h3>
-                        تعدد المستخدمين
-                    </h3>
-
-                    <p>
-                        إدارة الكاشير والموظفين
-                        والصلاحيات بسهولة.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- WORKFLOW -->
-
-    <section class="workflow-section">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>
-                    كيف يساعدك كاشيرك يوميًا؟
-                </h2>
-
-            </div>
-
-            <div class="workflow-grid">
-
-                <div class="workflow-card">
-
-                    <div class="workflow-number">
-                        01
-                    </div>
-
-                    <h3>
-                        ابدأ البيع مباشرة
-                    </h3>
-
-                    <p>
-                        ابدأ عمليات البيع بسهولة
-                        من الهاتف أو التابلت.
-                    </p>
-
-                </div>
-
-                <div class="workflow-card">
-
-                    <div class="workflow-number">
-                        02
-                    </div>
-
-                    <h3>
-                        استمر بالعمل أوفلاين
-                    </h3>
-
-                    <p>
-                        التطبيق يعمل بكفاءة كاملة
-                        حتى عند انقطاع الإنترنت.
-                    </p>
-
-                </div>
-
-                <div class="workflow-card">
-
-                    <div class="workflow-number">
-                        03
-                    </div>
-
-                    <h3>
-                        راقب التقارير
-                    </h3>
-
-                    <p>
-                        تقارير دقيقة للمبيعات
-                        والأرباح والمخزون.
-                    </p>
-
-                </div>
-
-                <div class="workflow-card">
-
-                    <div class="workflow-number">
-                        04
-                    </div>
-
-                    <h3>
-                        فحص التحويلات البنكية
-                    </h3>
-
-                    <p>
-                        تحليل الإشعارات البنكية
-                        وتسهيل المطابقة المالية.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- BUSINESS TYPES -->
-
-    <section class="business-section">
-
-        <div class="container">
-
-            <div class="business-box">
-
-                <div class="section-title">
-
-                    <h2>
-                        مناسب لمختلف الأنشطة التجارية
-                    </h2>
-
-                </div>
-
-                <div class="business-grid">
-
-                    <div class="business-card">
-
-                        <span>🏪</span>
-
-                        <h3>
-                            المحلات التجارية
-                        </h3>
-
-                    </div>
-
-                    <div class="business-card">
-
-                        <span>🍔</span>
-
-                        <h3>
-                            المطاعم والكافيهات
-                        </h3>
-
-                    </div>
-
-                    <div class="business-card">
-
-                        <span>💊</span>
-
-                        <h3>
-                            الصيدليات
-                        </h3>
-
-                    </div>
-
-                    <div class="business-card">
-
-                        <span>🛒</span>
-
-                        <h3>
-                            المتاجر الصغيرة
-                        </h3>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ABOUT -->
-
-    <section class="about-section">
-
-        <div class="container">
-
-            <div class="about-box">
-
-                <h2>
-                    لماذا كاشيرك؟
-                </h2>
-
-                <p>
-                    كاشيرك نظام متكامل لإدارة
-                    المبيعات والمخزون والفواتير
-                    بسهولة واحترافية.
-                </p>
-
-                <p>
-                    تم تصميم التطبيق للعمل
-                    بكفاءة عالية على الهاتف والتابلت
-                    مع دعم كامل للعمل بدون إنترنت.
-                </p>
-
-                <p>
-                    واجهة سهلة وتقارير احترافية
-                    وأدوات ذكية لفحص الإشعارات البنكية.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- DOWNLOAD -->
-<section id="final-download"
-         class="download-section">
-
-    <div class="container text-center">
-
-        <h2>
-            ابدأ إدارة متجرك بطريقة أذكى
-        </h2>
-
-        <p>
-            اختر النسخة المناسبة لجهازك.
-        </p>
-
-        <div class="download-buttons">
-
-            <a href="https://github.com/breakstor/Kashirak/releases/download/exe1.2.5/Kashirak_Setup__v1.2.5.exe"
-               class="btn-download-big">
-
-                💻 تحميل نسخة Windows
-
-            </a>
-
-            <a href="https://github.com/breakstor/Kashirak/releases/download/Apk1.2.6/Ksahirak.1.2.6.apk"
-               class="btn-download-big">
-
-                📱 تحميل نسخة Android
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <p>
-            جميع الحقوق محفوظة © كاشيرك 2026
-        </p>
-
-    </footer>
-
-    <script src="script.js"></script>
-
+  <script src="flutter_bootstrap.js" async></script>
 </body>
-
 </html>

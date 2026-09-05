@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>kafi_online</title>
+  <script>
+    // Single Page App redirect trick for static hosting
+    // Redirects to index.html keeping the path as a query param
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      '/?p=' + encodeURIComponent(l.pathname + l.search) + l.hash
+    );
+  </script>
+</head>
+<body></body>
+</html>
