@@ -1062,3 +1062,45 @@ a { -webkit-tap-highlight-color: transparent; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+/* Small refinements requested for the Kafi landing page */
+.phone-badges { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+.floating-note { white-space: nowrap; }
+.note-pos { top: 18%; right: -2%; }
+.note-store { top: 34%; left: -5%; }
+.note-remote { bottom: 32%; right: -5%; }
+.note-delivery { bottom: 15%; left: -3%; }
+.floating-note span { display: inline-grid; place-items: center; min-width: 25px; height: 25px; border-radius: 8px; background: #fff0ed; color: var(--primary-color); margin-left: 7px; font-size: .9rem; }
+.store-section-prominent { background: linear-gradient(135deg,#fff0ed 0%,#fff8f6 42%,#f1f4f8 100%); border-top: 1px solid #f5d9d4; border-bottom: 1px solid #f5d9d4; }
+.store-section-prominent .store-panel { position: relative; padding: 60px; border: 2px solid rgba(189,56,42,.17); box-shadow: 0 25px 75px rgba(120,43,34,.12); background: rgba(255,255,255,.96); }
+.store-section-prominent .store-copy { text-align: center; }
+.store-section-prominent .store-copy .eyebrow { margin-left: auto; margin-right: auto; }
+.store-section-prominent .store-tags { justify-content: center; }
+.store-cta-wrap { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
+.store-cta { min-width: 250px; justify-content: center; box-shadow: 0 14px 30px rgba(189,56,42,.23); }
+.download-symbol { position: relative; }
+.download-symbol-windows { display: block; width: 27px; height: 27px; border: 0; border-radius: 0; background: none; flex: 0 0 48px; }
+.download-symbol-windows::before, .download-symbol-windows::after { content: ""; position: absolute; width: 12px; height: 12px; background: #fff; top: 4px; right: 4px; box-shadow: -14px 0 #fff, 0 14px #fff, -14px 14px #fff; transform: skewY(-5deg); }
+.download-symbol-windows::after { display: none; }
+.download-symbol-android { display: block; width: 27px; height: 30px; border: 0; border-radius: 0; background: none; flex: 0 0 48px; }
+.download-symbol-android::before { content: ""; position: absolute; width: 24px; height: 17px; top: 7px; right: 1px; background: #fff; border-radius: 11px 11px 4px 4px; }
+.download-symbol-android::after { content: ""; position: absolute; width: 4px; height: 9px; top: 22px; right: 5px; background: #fff; border-radius: 0 0 3px 3px; box-shadow: 14px 0 #fff; }
+.download-symbol-android span::before, .download-symbol-android span::after { content: ""; position: absolute; width: 2px; height: 7px; top: 1px; right: 7px; background: #fff; transform: rotate(-28deg); border-radius: 2px; z-index: 2; }
+.download-symbol-android span::after { right: 18px; transform: rotate(28deg); }
+@media (max-width: 900px) {
+    .note-pos { right: 0; }
+    .note-store { left: 0; }
+    .note-remote { right: 0; }
+    .note-delivery { left: 0; }
+    .store-section-prominent .store-panel { padding: 40px 28px; }
+}
+@media (max-width: 600px) {
+    .floating-note { font-size: .78rem; padding: 9px 10px; }
+    .note-pos { top: 12%; right: -2%; }
+    .note-store { top: 30%; left: -2%; }
+    .note-remote { bottom: 30%; right: -2%; }
+    .note-delivery { bottom: 12%; left: -2%; }
+    .store-section-prominent .store-panel { padding: 30px 20px; }
+    .store-cta { width: 100%; }
+}
