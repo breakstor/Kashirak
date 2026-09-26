@@ -1,211 +1,86 @@
-// =========================================================
-// KASHIERK LANDING PAGE SCRIPT
-// =========================================================
+// Kafi landing page interactions
+(() => {
+    const slider = document.getElementById("slider");
+    const phoneScreen = document.querySelector(".screen");
+    const header = document.querySelector(".main-header");
+    const phone = document.querySelector(".phone-container");
 
-// =========================================================
-// SLIDER
-// =========================================================
+    // Screenshot carousel
+    if (slider) {
+        const slides = Array.from(slider.querySelectorAll("img"));
+        let currentSlide = 0;
+        let startX = 0;
+        let endX = 0;
+        const totalSlides = slides.length;
 
-const slider =
-document.getElementById("slider");
-
-let currentSlide = 0;
-
-const slides =
-slider.querySelectorAll("img");
-
-const totalSlides =
-slides.length;
-
-// تغيير تلقائي للصور
-
-setInterval(() => {
-
-    currentSlide++;
-
-    if (currentSlide >= totalSlides) {
-
-        currentSlide = 0;
-    }
-
-    updateSlider();
-
-}, 3000);
-
-// تحديث السلايدر
-
-function updateSlider() {
-
-    slider.style.transform =
-    `translateX(${currentSlide * 100}%)`;
-}
-
-// =========================================================
-// HEADER EFFECT
-// =========================================================
-
-const header =
-document.querySelector(".main-header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 40) {
-
-        header.style.background =
-        "rgba(255,255,255,0.98)";
-
-        header.style.boxShadow =
-        "0 10px 30px rgba(0,0,0,0.05)";
-
-    }
-
-    else {
-
-        header.style.background =
-        "rgba(255,255,255,0.92)";
-
-        header.style.boxShadow =
-        "none";
-    }
-
-});
-
-// =========================================================
-// REVEAL ANIMATION
-// =========================================================
-
-const revealItems =
-document.querySelectorAll(
-`
-.feature-card,
-.workflow-card,
-.business-card,
-.about-box
-`
-);
-
-const observer =
-new IntersectionObserver((entries) => {
-
-    entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
+        function updateSlider() {
+            slider.style.transform = `translateX(${currentSlide * 100}%)`;
         }
 
-    });
+        if (totalSlides > 1) {
+            window.setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }, 3500);
 
-}, {
-    threshold: 0.15
-});
+            if (phoneScreen) {
+                phoneScreen.addEventListener("touchstart", (event) => {
+                    startX = event.touches[0].clientX;
+                }, { passive: true });
 
-revealItems.forEach((item) => {
-
-    item.classList.add("hidden");
-
-    observer.observe(item);
-
-});
-
-// =========================================================
-// MOBILE TOUCH SUPPORT
-// =========================================================
-
-let startX = 0;
-let endX = 0;
-
-const phoneScreen =
-document.querySelector(".screen");
-
-phoneScreen.addEventListener(
-"touchstart",
-(e) => {
-
-    startX = e.touches[0].clientX;
-
-});
-
-phoneScreen.addEventListener(
-"touchend",
-(e) => {
-
-    endX = e.changedTouches[0].clientX;
-
-    handleSwipe();
-
-});
-
-function handleSwipe() {
-
-    // سحب لليسار
-
-    if (startX - endX > 50) {
-
-        currentSlide++;
-
-        if (currentSlide >= totalSlides) {
-
-            currentSlide = 0;
+                phoneScreen.addEventListener("touchend", (event) => {
+                    endX = event.changedTouches[0].clientX;
+                    const distance = startX - endX;
+                    if (Math.abs(distance) > 50) {
+                        currentSlide = distance > 0
+                            ? (currentSlide + 1) % totalSlides
+                            : (currentSlide - 1 + totalSlides) % totalSlides;
+                        updateSlider();
+                    }
+                }, { passive: true });
+            }
         }
     }
 
-    // سحب لليمين
+    // Header shadow after scrolling
+    function updateHeader() {
+        if (!header) return;
+        header.classList.toggle("is-scrolled", window.scrollY > 40);
+        header.style.boxShadow = window.scrollY > 40
+            ? "0 10px 30px rgba(0,0,0,.06)"
+            : "none";
+    }
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    updateHeader();
 
-    else if (endX - startX > 50) {
+    // Reveal content as it enters the viewport
+    const revealItems = document.querySelectorAll(
+        ".service-card, .business-card, .intro-card, .store-panel"
+    );
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
 
-        currentSlide--;
-
-        if (currentSlide < 0) {
-
-            currentSlide =
-            totalSlides - 1;
-        }
+        revealItems.forEach((item) => {
+            item.classList.add("hidden");
+            observer.observe(item);
+        });
     }
 
-    updateSlider();
-}
-
-// =========================================================
-// SMOOTH BUTTON EFFECT
-// =========================================================
-
-const buttons =
-document.querySelectorAll(
-".btn-primary, .btn-download-big"
-);
-
-buttons.forEach((button) => {
-
-    button.addEventListener(
-    "mouseenter",
-    () => {
-
-        button.style.transform =
-        "translateY(-2px)";
-    });
-
-    button.addEventListener(
-    "mouseleave",
-    () => {
-
-        button.style.transform =
-        "translateY(0)";
-    });
-
-});
-
-// =========================================================
-// PARALLAX EFFECT
-// =========================================================
-
-window.addEventListener("scroll", () => {
-
-    const scrollY = window.scrollY;
-
-    const phone =
-    document.querySelector(".phone-container");
-
-    phone.style.transform =
-    `translateY(${scrollY * 0.03}px)`;
-});
+    // Subtle hero phone movement on desktop only
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+        if (ticking || window.matchMedia("(max-width: 900px)").matches || !phone) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+            phone.style.translate = `0 ${Math.min(window.scrollY * 0.025, 18)}px`;
+            ticking = false;
+        });
+    }, { passive: true });
+})();
