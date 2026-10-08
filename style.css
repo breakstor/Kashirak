@@ -1278,3 +1278,90 @@ a { -webkit-tap-highlight-color: transparent; }
     .pricing-link-card > span { width: 100%; text-align: center; }
     .pricing-link-btn { width: min(320px, 100%); justify-content: center; }
 }
+
+
+/* مستقل: أسعار اشتراكات النظام، ولا علاقة له بمتجر كافي */
+.system-pricing-promo {
+    background: #f7f8fa;
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+.system-pricing-card {
+    width: min(820px, 100%);
+    margin: 0 auto;
+    padding: 30px 28px;
+    background: #fff;
+    border: 2px solid rgba(189,56,42,.14);
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 16px 45px rgba(16,24,40,.07);
+}
+.system-pricing-card .eyebrow {
+    margin-left: auto;
+    margin-right: auto;
+}
+.system-pricing-card h2 {
+    margin: 10px 0 8px;
+    font-size: clamp(1.65rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: #182230;
+}
+.system-pricing-card p {
+    margin: 0 0 20px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+.system-pricing-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 260px;
+    padding: 15px 24px;
+    border-radius: 15px;
+    background: #29394d;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 900;
+    box-shadow: 0 12px 28px rgba(41,57,77,.20);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.system-pricing-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(41,57,77,.25);
+}
+
+/* استخدام أيقونات SVG الموحدة؛ نفس الأيقونة التي كانت تعمل بشكل صحيح */
+.download-symbol svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+}
+.download-symbol-windows,
+.download-symbol-android {
+    display: grid !important;
+    place-items: center;
+}
+.download-symbol-windows::before,
+.download-symbol-windows::after,
+.download-symbol-android::before,
+.download-symbol-android::after,
+.download-symbol-android span::before,
+.download-symbol-android span::after {
+    display: none !important;
+    content: none !important;
+}
+.download-symbol-android svg {
+    width: 29px;
+    height: 29px;
+}
+.download-symbol-android svg circle {
+    fill: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .system-pricing-promo { padding-top: 18px; padding-bottom: 18px; }
+    .system-pricing-card { padding: 24px 18px; border-radius: 20px; }
+    .system-pricing-btn { width: min(320px,100%); }
+}
