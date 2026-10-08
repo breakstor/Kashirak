@@ -1187,75 +1187,94 @@ a { -webkit-tap-highlight-color: transparent; }
     .download-app-card .btn-download-big { padding: 15px 13px; }
 }
 
-/* Store section heading and pricing link */
-.store-top-row {
+
+/* Store section heading + separate pricing link */
+.store-section-heading {
+    text-align: center;
+    margin: 0 auto 24px;
+}
+.store-section-heading .eyebrow {
+    margin-left: auto;
+    margin-right: auto;
+}
+.store-section-heading h2 {
+    margin: 10px 0 8px;
+}
+.store-section-heading p {
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.8;
+}
+.pricing-link-card {
+    width: min(760px, 100%);
+    margin: 0 auto 28px;
+    padding: 14px 18px;
+    border: 1px solid #e7eaf0;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(16,24,40,.06);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 18px;
-    margin-bottom: 24px;
-    text-align: right;
+    flex-wrap: wrap;
 }
-.store-section-label {
-    color: var(--text-main);
-    font-size: 1.15rem;
-    font-weight: 900;
+.pricing-link-card span {
+    color: var(--ink);
+    font-weight: 700;
 }
-.store-pricing-btn {
+.pricing-link-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 12px;
-    background: #26364d;
+    gap: 10px;
+    padding: 12px 22px;
+    border-radius: 13px;
+    background: #29394d;
     color: #fff;
     text-decoration: none;
     font-weight: 800;
-    white-space: nowrap;
+    box-shadow: 0 10px 22px rgba(41,57,77,.18);
     transition: transform .2s ease, box-shadow .2s ease;
-    box-shadow: 0 8px 20px rgba(38,54,77,.14);
 }
-.store-pricing-btn:hover {
+.pricing-link-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(38,54,77,.2);
+    box-shadow: 0 14px 28px rgba(41,57,77,.23);
 }
 
-/* Clean platform icons */
-.download-symbol svg {
-    display: block;
-    width: 28px;
-    height: 28px;
-    fill: #fff;
-}
-.download-symbol-windows,
+/* Cleaner Android mark */
 .download-symbol-android {
-    display: grid !important;
-    place-items: center;
+    width: 30px;
+    height: 31px;
+    flex: 0 0 48px;
 }
-.download-symbol-windows::before,
-.download-symbol-windows::after,
-.download-symbol-android::before,
-.download-symbol-android::after,
+.download-symbol-android::before {
+    width: 25px;
+    height: 18px;
+    top: 8px;
+    right: 1px;
+    border-radius: 12px 12px 5px 5px;
+}
+.download-symbol-android::after {
+    width: 5px;
+    height: 9px;
+    top: 24px;
+    right: 5px;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 15px 0 #fff;
+}
 .download-symbol-android span::before,
 .download-symbol-android span::after {
-    display: none !important;
-    content: none !important;
+    width: 2px;
+    height: 7px;
+    top: 2px;
+    right: 8px;
 }
-.download-symbol-android svg {
-    width: 29px;
-    height: 29px;
-}
-.download-symbol-android svg circle {
-    fill: var(--primary-color);
-}
+.download-symbol-android span::after { right: 19px; }
 
 @media (max-width: 600px) {
-    .store-top-row {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
-    }
-    .store-pricing-btn {
-        align-self: flex-start;
-    }
+    .store-section-heading { margin-bottom: 20px; }
+    .store-section-heading h2 { font-size: 1.65rem; }
+    .pricing-link-card { padding: 14px; gap: 12px; }
+    .pricing-link-card > span { width: 100%; text-align: center; }
+    .pricing-link-btn { width: min(320px, 100%); justify-content: center; }
 }
