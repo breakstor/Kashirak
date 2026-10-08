@@ -1186,3 +1186,76 @@ a { -webkit-tap-highlight-color: transparent; }
     .download-app-number { top: 15px; left: 16px; }
     .download-app-card .btn-download-big { padding: 15px 13px; }
 }
+
+/* Store section heading and pricing link */
+.store-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+    text-align: right;
+}
+.store-section-label {
+    color: var(--text-main);
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+.store-pricing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: #26364d;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    white-space: nowrap;
+    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 8px 20px rgba(38,54,77,.14);
+}
+.store-pricing-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(38,54,77,.2);
+}
+
+/* Clean platform icons */
+.download-symbol svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+}
+.download-symbol-windows,
+.download-symbol-android {
+    display: grid !important;
+    place-items: center;
+}
+.download-symbol-windows::before,
+.download-symbol-windows::after,
+.download-symbol-android::before,
+.download-symbol-android::after,
+.download-symbol-android span::before,
+.download-symbol-android span::after {
+    display: none !important;
+    content: none !important;
+}
+.download-symbol-android svg {
+    width: 29px;
+    height: 29px;
+}
+.download-symbol-android svg circle {
+    fill: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+    .store-top-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .store-pricing-btn {
+        align-self: flex-start;
+    }
+}
