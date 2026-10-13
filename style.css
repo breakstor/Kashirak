@@ -1,1367 +1,284 @@
-/* =========================================================
-   KASHIERK LANDING PAGE
-   ========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
-
+/* إعدادات عامة */
 :root {
-
-    --primary-color: #bd382a;
-
-    --primary-dark: #a52f23;
-
+    --primary-color: #2563eb;
     --dark-bg: #0f172a;
-
-    --dark-card: #162033;
-
     --light-bg: #f8fafc;
-
-    --text-main: #1e293b;
-
-    --text-light: #64748b;
-
-    --white: #ffffff;
-
-    --border-color: rgba(255,255,255,0.08);
-
-    --shadow-main:
-    0 20px 50px rgba(0,0,0,0.12);
-
-    --font-main:
-    'Tajawal', sans-serif;
 }
-
-/* =========================================================
-   RESET
-   ========================================================= */
 
 * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
-    font-family: var(--font-main);
-}
-
-html {
-
-    scroll-behavior: smooth;
+    font-family: 'Cairo', sans-serif;
 }
 
 body {
-
-    background: var(--white);
-
+    background-color: white;
     overflow-x: hidden;
-
-    line-height: 1.7;
 }
 
-/* =========================================================
-   GLOBAL
-   ========================================================= */
-
 .container {
-
-    width: 100%;
-
-    max-width: 1250px;
-
+    max-width: 1200px;
     margin: 0 auto;
-
     padding: 0 20px;
 }
 
-.text-center {
-
-    text-align: center;
-}
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
+/* الهيدر - تقليل المسافة */
 .main-header {
-
-    position: fixed;
-
-    top: 0;
-
-    width: 100%;
-
-    height: 72px;
-
+    height: 70px;
     display: flex;
-
     align-items: center;
-
-    background:
-    rgba(255,255,255,0.92);
-
-    backdrop-filter: blur(12px);
-
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     z-index: 1000;
-
-    border-bottom:
-    1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid #eee;
 }
 
 .header-flex {
-
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
-
+    align-items: center;
     width: 100%;
 }
 
 .logo {
-
-    font-size: 28px;
-
+    font-size: 24px;
     font-weight: 900;
-
     color: var(--primary-color);
-
-    letter-spacing: -1px;
 }
 
 .btn-primary {
-
     background: var(--primary-color);
-
     color: white;
-
-    text-decoration: none;
-
-    padding: 12px 24px;
-
+    padding: 10px 25px;
     border-radius: 50px;
-
-    font-weight: 700;
-
-    transition: 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.btn-primary:hover {
-
-    background: var(--primary-dark);
-
-    transform: translateY(-2px);
-}
-
-/* =========================================================
-   HERO SECTION
-   ========================================================= */
-
+/* قسم الهيرو - تقليل المسافات العلوية */
 .hero {
-
-    padding-top: 130px;
-
-    background:
-    linear-gradient(
-        to bottom,
-        #fff7f5,
-        #ffffff
-    );
-
+    padding-top: 100px; /* مسافة بسيطة بعد الهيدر */
+    padding-bottom: 0;
+    background: linear-gradient(to bottom, #eff6ff, #ffffff);
     text-align: center;
 }
 
+.main-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
 .hero h1 {
-
-    font-size: 3rem;
-
-    line-height: 1.3;
-
+    font-size: 2.5rem;
     font-weight: 900;
-
-    color: var(--text-main);
-
-    margin-bottom: 18px;
+    color: #1e293b;
+    margin-bottom: 15px;
 }
 
-.hero-desc {
-
-    max-width: 820px;
-
-    margin: 0 auto;
-
-    font-size: 1.15rem;
-
-    color: var(--text-light);
-
-    margin-bottom: 35px;
-}
-/* =========================================================
-   HERO BUTTONS
-   ========================================================= */
-
-.hero-buttons {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 16px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 45px;
+.hero p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 40px;
 }
 
-.primary-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: var(--primary-color);
-
-    color: white;
-
-    text-decoration: none;
-
-    padding: 15px 34px;
-
-    border-radius: 18px;
-
-    font-weight: 800;
-
-    font-size: 1rem;
-
-    transition: 0.3s ease;
-
-    box-shadow:
-    0 14px 35px rgba(189,56,42,0.18);
-}
-
-.primary-btn:hover {
-
-    background: var(--primary-dark);
-
-    transform: translateY(-3px);
-}
-
-.secondary-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 15px 34px;
-
-    border-radius: 18px;
-
-    border: 2px solid #bd382a;
-
-    color: #bd382a;
-
-    text-decoration: none;
-
-    font-weight: 800;
-
-    font-size: 1rem;
-
-    background: white;
-
-    transition: 0.3s ease;
-}
-
-.secondary-btn:hover {
-
-    background: #bd382a;
-
-    color: white;
-
-    transform: translateY(-3px);
-}
-/* =========================================================
-   BADGES
-   ========================================================= */
-
-.hero-badges {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-bottom: 50px;
-}
-
-.badge {
-
-    background:
-    rgba(189,56,42,0.08);
-
-    color: var(--primary-color);
-
-    border:
-    1px solid rgba(189,56,42,0.1);
-
-    padding: 10px 18px;
-
-    border-radius: 50px;
-
-    font-weight: 700;
-
-    font-size: 0.95rem;
-}
-
-/* =========================================================
-   PHONE
-   ========================================================= */
-
+/* حاوية الهاتف - تكبير الحجم وعمل التداخل */
 .phone-container {
-
     position: relative;
-
-    width: 380px;
-
-    margin: 0 auto -230px;
-
-    z-index: 100;
+    width: 340px; /* عرض كبير ومناسب للجوال */
+    margin: 0 auto -180px; /* مارجن سفلي سالب لسحب القسم التالي فوق الهاتف */
+    z-index: 50;
+    transition: transform 0.3s ease;
 }
 
 @media (min-width: 768px) {
-
     .phone-container {
-
-        width: 520px;
-
-        margin-bottom: -320px;
+        width: 420px; /* حجم أكبر لشاشات الكمبيوتر */
+        margin-bottom: -250px;
     }
 }
 
 .phone-frame {
-
     width: 100%;
-
+    height: auto;
     display: block;
-
     position: relative;
-
     z-index: 10;
-
-    filter:
-    drop-shadow(
-        0 30px 70px rgba(0,0,0,0.2)
-    );
+    filter: drop-shadow(0 25px 50px rgba(0,0,0,0.15));
 }
 
+/* الشاشة الداخلية - ضبطها لتناسب إطار iPhone 15 Pro */
 .screen {
-
     position: absolute;
-
-    top: 2.1%;
-
-    left: 5.8%;
-
-    width: 88.5%;
-
-    height: 95.7%;
-
-    overflow: hidden;
-
-    border-radius: 45px;
-
+    top: 2.2%; /* دقة متناهية لتناسب الإطار الأسود */
+    left: 6.4%;
+    width: 87.2%;
+    height: 95.5%;
     background: #000;
-
+    border-radius: 45px; /* انحناء الشاشة */
+    overflow: hidden;
     z-index: 5;
 }
 
+/* السلايدر */
 .slider {
-
     display: flex;
-
     width: 100%;
-
     height: 100%;
-
-    transition:
-    transform 0.5s ease;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .slider img {
-
     width: 100%;
-
     height: 100%;
-
-    object-fit: cover;
-
+    object-fit: cover; /* جعل الصور تملأ الشاشة بالكامل */
     flex-shrink: 0;
 }
 
-/* =========================================================
-   FEATURES
-   ========================================================= */
-
+/* قسم المميزات - التداخل */
 .features {
-
-    background: var(--dark-bg);
-
+    background-color: var(--dark-bg);
     color: white;
-
-    padding: 320px 0 100px;
+    padding-top: 220px; /* مسافة كافية لكي يظهر الهاتف المتداخل */
+    padding-bottom: 80px;
+    position: relative;
+    z-index: 1;
 }
 
 .section-title h2 {
-
+    font-size: 2rem;
+    margin-bottom: 50px;
     text-align: center;
-
-    font-size: 2.2rem;
-
-    font-weight: 900;
-
-    margin-bottom: 60px;
 }
 
 .features-grid {
-
     display: grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .feature-card {
-
-    background:
-    rgba(255,255,255,0.04);
-
-    border:
-    1px solid var(--border-color);
-
-    border-radius: 26px;
-
-    padding: 35px 28px;
-
-    transition: 0.35s ease;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: 0.3s;
 }
 
 .feature-card:hover {
-
     transform: translateY(-10px);
-
-    border-color:
-    rgba(189,56,42,0.3);
-
-    background:
-    rgba(255,255,255,0.06);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .feature-card .icon {
-
+    font-size: 40px;
     display: block;
-
-    font-size: 42px;
-
-    margin-bottom: 18px;
-}
-
-.feature-card h3 {
-
-    font-size: 1.3rem;
-
-    margin-bottom: 14px;
-
-    font-weight: 800;
-}
-
-.feature-card p {
-
-    color: #cbd5e1;
-
-    font-size: 0.96rem;
-
-    line-height: 1.9;
-}
-
-/* =========================================================
-   WORKFLOW
-   ========================================================= */
-
-.workflow-section {
-
-    padding: 100px 0;
-
-    background: white;
-}
-
-.workflow-grid {
-
-    display: grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(250px, 1fr));
-
-    gap: 25px;
-}
-
-.workflow-card {
-
-    background: white;
-
-    border-radius: 24px;
-
-    padding: 35px 30px;
-
-    border:
-    1px solid rgba(0,0,0,0.04);
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.06);
-
-    transition: 0.3s ease;
-}
-
-.workflow-card:hover {
-
-    transform: translateY(-8px);
-}
-
-.workflow-number {
-
-    width: 60px;
-
-    height: 60px;
-
-    border-radius: 18px;
-
-    background:
-    rgba(189,56,42,0.1);
-
-    color: var(--primary-color);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 1.2rem;
-
-    font-weight: 900;
-
     margin-bottom: 20px;
 }
-
-.workflow-card h3 {
-
-    font-size: 1.2rem;
-
-    margin-bottom: 14px;
-
-    color: var(--text-main);
-}
-
-.workflow-card p {
-
-    color: var(--text-light);
-
-    line-height: 1.9;
-}
-
-/* =========================================================
-   BUSINESS SECTION
-   ========================================================= */
-
-.business-section {
-
-    padding-bottom: 100px;
-
-    background: white;
-}
-
-.business-box {
-
-    background:
-    linear-gradient(
-        135deg,
-        #fff7f5,
-        #ffffff
-    );
-
-    border-radius: 35px;
-
-    padding: 60px 40px;
-
-    border:
-    1px solid rgba(189,56,42,0.08);
-}
-
-.business-grid {
-
-    display: grid;
-
-    grid-template-columns:
-    repeat(auto-fit, minmax(220px, 1fr));
-
-    gap: 20px;
-}
-
-.business-card {
-
-    background: white;
-
-    border-radius: 22px;
-
-    padding: 35px 20px;
-
-    text-align: center;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,0.05);
-
-    transition: 0.3s ease;
-}
-
-.business-card:hover {
-
-    transform: translateY(-8px);
-}
-
-.business-card span {
-
-    font-size: 2.4rem;
-
-    display: block;
-
-    margin-bottom: 18px;
-}
-
-.business-card h3 {
-
-    font-size: 1.1rem;
-
-    color: var(--text-main);
-
-    font-weight: 800;
-}
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
-.about-section {
-
-    padding: 100px 0;
-
-    background: var(--light-bg);
-}
-
-.about-box {
-
-    max-width: 950px;
-
-    margin: auto;
-
-    background: white;
-
-    border-radius: 30px;
-
-    padding: 50px;
-
-    box-shadow: var(--shadow-main);
-}
-
-.about-box h2 {
-
-    font-size: 2.2rem;
-
-    margin-bottom: 25px;
-
-    color: var(--text-main);
-
-    font-weight: 900;
-}
-
-.about-box p {
-
-    font-size: 1.08rem;
-
-    color: var(--text-light);
-
-    margin-bottom: 20px;
-
-    line-height: 2;
-}
-
-/* =========================================================
-   DOWNLOAD
-   ========================================================= */
-
-.download-section {
-
-    padding: 110px 0;
-
-    text-align: center;
-}
-
-.download-section h2 {
-
-    font-size: 2.4rem;
-
-    margin-bottom: 18px;
-
-    color: var(--text-main);
-
-    font-weight: 900;
-}
-
-.download-section p {
-
-    color: var(--text-light);
-
-    font-size: 1.1rem;
-
-    margin-bottom: 40px;
-}
-
-.btn-download-big {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: var(--primary-color);
-
-    color: white;
-
-    text-decoration: none;
-
-    padding: 20px 50px;
-
-    border-radius: 22px;
-
-    font-size: 1.2rem;
-
-    font-weight: 800;
-
-    transition: 0.3s ease;
-
-    box-shadow:
-    0 18px 40px rgba(189,56,42,0.25);
-}
-
-.btn-download-big:hover {
-
-    transform: scale(1.03);
-}
-.download-buttons {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 20px;
-
-    flex-wrap: wrap;
-
-    margin-top: 30px;
-}
-
-.download-buttons .btn-download-big {
-
-    min-width: 280px;
-}
-/* =========================================================
-   FOOTER
-   ========================================================= */
 
 .footer {
-
     background: #020617;
-
     color: #94a3b8;
-
     text-align: center;
-
-    padding: 35px 0;
-
-    font-size: 0.95rem;
-}
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-.hidden {
-
-    opacity: 0;
-
-    transform: translateY(40px);
-
-    transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-}
-
-.show {
-
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
-
-::-webkit-scrollbar {
-
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-
-    background: #f1f5f9;
-}
-
-::-webkit-scrollbar-thumb {
-
-    background: var(--primary-color);
-
-    border-radius: 20px;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .hero h1 {
-
-        font-size: 2.1rem;
-    }
-
-    .hero-desc {
-
-        font-size: 1rem;
-    }
-
-    .section-title h2,
-    .about-box h2,
-    .download-section h2 {
-
-        font-size: 1.8rem;
-    }
-
-    .about-box {
-
-        padding: 35px 25px;
-    }
-
-    .business-box {
-
-        padding: 40px 20px;
-    }
-
-    .workflow-card,
-    .business-card {
-
-        padding: 28px 22px;
-    }
-
-    .btn-download-big {
-
-        width: 100%;
-    }
-   .hero-buttons {
-
-        flex-direction: column;
-
-        width: 100%;
-    }
-
-    .hero-buttons a {
-
-        width: 100%;
-    }
-   .download-buttons {
-
-    flex-direction: column;
-}
+    padding: 30px 0;
+    font-size: 14px;
 }
 
 
-/* =========================================================
-   KAFI REFRESH — responsive landing page
-   ========================================================= */
-:root {
-    --primary-color: #bd382a;
-    --primary-dark: #982b20;
-    --ink: #182230;
-    --muted: #667085;
-    --soft: #fff7f5;
-    --line: #eceff3;
-}
-body { color: var(--ink); }
-a { -webkit-tap-highlight-color: transparent; }
-.main-header { height: 76px; }
-.logo { text-decoration: none; font-size: 31px; letter-spacing: -.8px; }
-.logo span { color: #f2a69c; }
-.header-nav { display: flex; align-items: center; gap: 27px; }
-.header-nav > a:not(.btn-primary) { color: #475467; text-decoration: none; font-weight: 700; font-size: .96rem; }
-.header-nav > a:not(.btn-primary):hover { color: var(--primary-color); }
-.header-nav .btn-primary { padding: 10px 22px; }
-.hero { padding: 150px 0 75px; background: radial-gradient(ellipse at 80% 20%, #ffe8e3 0, transparent 42%), linear-gradient(145deg,#fffaf9,#fff 68%); overflow: hidden; }
-.hero-layout { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 35px; text-align: right; }
-.hero-copy { position: relative; z-index: 2; }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-color); background: rgba(189,56,42,.08); border: 1px solid rgba(189,56,42,.12); border-radius: 999px; padding: 7px 14px; font-size: .9rem; font-weight: 800; margin-bottom: 18px; }
-.hero h1 { font-size: clamp(2.4rem,4.2vw,4.2rem); line-height: 1.22; font-weight: 900; color: #17202e; margin-bottom: 22px; }
-.hero h1 span { display: block; color: var(--primary-color); }
-.hero-desc { max-width: 650px; margin: 0 0 28px; color: #667085; font-size: 1.15rem; line-height: 2; }
-.hero-buttons { justify-content: flex-start; margin-bottom: 24px; }
-.primary-btn, .secondary-btn { min-height: 52px; padding: 14px 27px; border-radius: 14px; }
-.hero-points { display: flex; flex-wrap: wrap; gap: 12px 20px; color: #475467; font-size: .94rem; font-weight: 700; }
-.hero-points span::first-letter { color: var(--primary-color); }
-.hero-visual { position: relative; min-height: 570px; display: flex; justify-content: center; align-items: center; }
-.visual-glow { position: absolute; width: 450px; height: 450px; border-radius: 50%; background: radial-gradient(circle,#f9d5cf 0,#fff0ed 48%,transparent 70%); }
-.phone-container { width: min(370px, 78%); margin: 0; z-index: 2; }
-.phone-frame { filter: drop-shadow(0 30px 60px rgba(29,35,45,.22)); }
-.screen { border-radius: 42px; }
-.floating-note { position: absolute; z-index: 4; background: white; padding: 13px 18px; border-radius: 15px; box-shadow: 0 14px 38px rgba(26,31,44,.12); font-weight: 800; color: #293241; }
-.floating-note span { color: var(--primary-color); margin-left: 8px; font-size: .82rem; }
-.note-top { top: 18%; right: 0; }
-.note-bottom { bottom: 17%; left: 0; }
-.section-pad { padding: 95px 0; }
-.intro-section { padding-top: 65px; }
-.intro-card { display: grid; grid-template-columns: 90px 1fr; gap: 28px; align-items: start; max-width: 1080px; padding: 44px 48px; border: 1px solid #f0e3e0; border-radius: 28px; background: linear-gradient(120deg,#fff8f6,#fff); box-shadow: 0 18px 55px rgba(56,37,33,.045); }
-.intro-mark { width: 76px; height: 76px; border-radius: 22px; display: grid; place-items: center; color: white; background: var(--primary-color); font-size: 2.3rem; font-weight: 900; box-shadow: 0 12px 24px rgba(189,56,42,.22); }
-.intro-card h2, .section-heading h2, .store-copy h2, .download-section h2 { font-size: clamp(1.9rem,3vw,2.65rem); line-height: 1.35; font-weight: 900; color: #182230; margin-bottom: 16px; }
-.intro-card p { color: var(--muted); font-size: 1.08rem; line-height: 2.1; }
-.services-section { background: #121a29; color: white; }
-.section-heading { max-width: 760px; margin: 0 auto 48px; text-align: center; }
-.section-heading h2 { color: inherit; margin-bottom: 12px; }
-.section-heading > p { color: #98a2b3; font-size: 1.05rem; line-height: 1.9; }
-.services-section .eyebrow { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.1); }
-.service-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
-.service-card { position: relative; padding: 32px; border: 1px solid rgba(255,255,255,.1); border-radius: 24px; background: rgba(255,255,255,.045); transition: transform .25s ease,border-color .25s ease,background .25s ease; }
-.service-card:hover { transform: translateY(-5px); border-color: rgba(241,143,130,.55); background: rgba(255,255,255,.07); }
-.service-featured { background: linear-gradient(145deg,rgba(189,56,42,.2),rgba(255,255,255,.045)); }
-.service-icon { width: 55px; height: 55px; display: grid; place-items: center; border-radius: 17px; background: rgba(255,255,255,.09); color: #ffb6aa; font-size: 1.8rem; margin-bottom: 20px; }
-.service-index { color: #f3a69b; font-size: .85rem; font-weight: 800; }
-.service-card h3 { color: white; font-size: 1.45rem; margin: 8px 0 12px; font-weight: 900; }
-.service-card p { color: #c6ccd6; line-height: 1.95; margin-bottom: 16px; }
-.service-card ul { list-style: none; display: grid; gap: 9px; padding: 0; }
-.service-card li { color: #e5e7eb; position: relative; padding-right: 22px; line-height: 1.7; }
-.service-card li::before { content: "✓"; position: absolute; right: 0; color: #f3a69b; font-weight: 900; }
-.business-section { background: #fff; padding-bottom: 80px; }
-.business-section .section-heading { color: var(--ink); }
-.business-section .section-heading > p { color: var(--muted); }
-.business-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
-.business-card { border: 1px solid #edf0f3; border-radius: 19px; padding: 25px 15px; background: white; box-shadow: 0 8px 24px rgba(16,24,40,.035); }
-.business-card span { font-size: 2rem; margin-bottom: 12px; }
-.business-card h3 { font-size: 1rem; }
-.business-note { text-align: center; color: var(--muted); margin-top: 28px; }
-.store-section { background: #f7f8fa; }
-.store-panel { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 35px; padding: 55px; border-radius: 30px; background: white; border: 1px solid #eceff3; box-shadow: 0 18px 55px rgba(16,24,40,.06); overflow: hidden; }
-.store-copy h2 { margin-bottom: 16px; }
-.store-copy > p { color: var(--muted); line-height: 2; font-size: 1.05rem; margin-bottom: 20px; }
-.store-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 27px; }
-.store-tags span { border: 1px solid #f0d8d4; background: #fff8f6; color: #8e3329; border-radius: 999px; padding: 8px 12px; font-size: .9rem; font-weight: 700; }
-.store-visual { min-height: 310px; position: relative; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle,#fff0ed 0,transparent 70%); }
-.device { position: absolute; background: #222b38; border: 5px solid #333d4c; box-shadow: 0 18px 35px rgba(25,32,45,.2); }
-.device-screen { background: linear-gradient(135deg,#f9c9c1,#fff7f5 55%,#dce5ee); width: 100%; height: 100%; border-radius: 4px; }
-.device-laptop { width: 220px; height: 145px; top: 50px; right: 45px; border-radius: 10px 10px 4px 4px; padding: 7px; }
-.device-base { position: absolute; height: 10px; background: #aab2bd; width: 112%; left: -6%; bottom: -15px; border-radius: 2px 2px 10px 10px; }
-.device-tablet { width: 125px; height: 175px; bottom: 36px; left: 34px; padding: 7px; border-radius: 13px; transform: rotate(-7deg); }
-.device-printer { width: 100px; height: 74px; bottom: 45px; right: 78px; border-radius: 8px; background: #333d4c; }
-.printer-slot { position: absolute; top: 19px; left: 12px; right: 12px; height: 5px; background: #111827; }
-.printer-paper { position: absolute; width: 37px; height: 50px; top: -43px; left: 31px; background: repeating-linear-gradient(to bottom,#fff 0,#fff 5px,#d5d9df 6px,#fff 7px); border-radius: 3px; }
-.device-scanner { width: 36px; height: 82px; left: 145px; top: 45px; border-radius: 8px 8px 15px 15px; transform: rotate(25deg); background: #333d4c; }
-.device-scanner span { color: #f7a99e; font-size: 2rem; display: block; text-align: center; margin-top: 8px; }
-.download-section { padding: 100px 0; background: linear-gradient(135deg,#fff8f6,#fff 65%); }
-.download-section .eyebrow { margin-bottom: 17px; }
-.download-section p { color: var(--muted); }
-.download-buttons { gap: 16px; }
-.download-buttons .btn-download-big { display: flex; gap: 16px; align-items: center; text-align: right; min-width: 300px; padding: 20px 25px; border-radius: 18px; box-shadow: 0 12px 30px rgba(189,56,42,.16); }
-.download-symbol { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: rgba(255,255,255,.17); font-size: 1.7rem; flex: 0 0 auto; }
-.btn-download-big strong, .btn-download-big small { display: block; }
-.btn-download-big strong { font-size: 1.05rem; }
-.btn-download-big small { font-size: .83rem; font-weight: 500; opacity: .85; margin-top: 3px; }
-.download-note { margin-top: 25px; font-size: .95rem !important; }
-.download-note a { color: var(--primary-color); font-weight: 800; }
-.footer { padding: 30px 0; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-.footer-logo { color: white; }
-.footer-inner p { margin: 0; }
-.footer-inner small { color: #64748b; }
-.hidden { opacity: 0; transform: translateY(24px); }
-.show { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 900px) {
-    .header-nav { gap: 14px; }
-    .header-nav > a:not(.btn-primary) { display: none; }
-    .hero-layout { grid-template-columns: 1fr; text-align: center; }
-    .hero-copy { order: 1; }
-    .hero-visual { order: 2; min-height: 490px; }
-    .hero-desc { margin-left: auto; margin-right: auto; }
-    .hero-buttons { justify-content: center; }
-    .hero-points { justify-content: center; }
-    .phone-container { width: min(330px,72%); }
-    .note-top { right: 2%; }
-    .note-bottom { left: 2%; }
-    .store-panel { grid-template-columns: 1fr; }
-    .store-visual { order: -1; min-height: 280px; }
-    .business-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
-}
-@media (max-width: 600px) {
-    .main-header { height: 66px; }
-    .logo { font-size: 27px; }
-    .header-nav .btn-primary { padding: 9px 15px; font-size: .88rem; }
-    .hero { padding-top: 105px; }
-    .hero h1 { font-size: 2.25rem; }
-    .hero-desc { font-size: 1rem; }
-    .hero-buttons { flex-direction: column; width: 100%; gap: 11px; }
-    .hero-buttons a { width: 100%; }
-    .hero-visual { min-height: 420px; }
-    .phone-container { width: min(290px,75%); }
-    .floating-note { padding: 10px 12px; font-size: .85rem; }
-    .section-pad { padding: 65px 0; }
-    .intro-section { padding-top: 35px; }
-    .intro-card { grid-template-columns: 1fr; padding: 28px 23px; gap: 18px; }
-    .intro-mark { width: 60px; height: 60px; font-size: 1.8rem; border-radius: 18px; }
-    .service-grid { grid-template-columns: 1fr; }
-    .service-card { padding: 26px 22px; }
-    .business-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 11px; }
-    .business-card { padding: 21px 10px; }
-    .business-card h3 { font-size: .92rem; }
-    .store-panel { padding: 30px 22px; }
-    .store-visual { min-height: 230px; transform: scale(.9); }
-    .device-laptop { right: 30px; width: 185px; height: 125px; }
-    .device-tablet { left: 8px; width: 105px; height: 150px; }
-    .device-printer { right: 55px; transform: scale(.85); }
-    .device-scanner { left: 105px; }
-    .download-buttons { flex-direction: column; }
-    .download-buttons .btn-download-big { width: 100%; min-width: 0; padding: 17px; }
-    .footer-inner { justify-content: center; text-align: center; flex-direction: column; }
-}
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
-}
+/* كرت التعريف بمتاجر عملاء كافي */
+.customer-stores-section{padding-top:12px;padding-bottom:38px;background:#f8fafc}
+.customer-stores-card{position:relative;display:flex;align-items:center;justify-content:space-between;gap:30px;overflow:hidden;padding:clamp(25px,4vw,44px);border:1px solid #e2e8f0;border-radius:26px;background:linear-gradient(125deg,#fff 0%,#f8fbff 62%,#eff6ff 100%);box-shadow:0 16px 42px rgba(15,23,42,.07)}
+.customer-stores-copy{position:relative;z-index:2;max-width:720px}
+.customer-stores-copy .eyebrow{display:inline-block;margin-bottom:12px;padding:6px 13px;border-radius:50px;background:#fff0ee;color:#bd382a;font-size:14px;font-weight:800}
+.customer-stores-copy h2{margin:0 0 12px;color:#1e293b;font-size:clamp(24px,3vw,34px);font-weight:900;line-height:1.45}
+.customer-stores-copy p{max-width:680px;margin:0 0 22px;color:#64748b;font-size:16px;line-height:1.95}
+.customer-stores-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:49px;padding:12px 22px;border-radius:13px;background:#bd382a;color:#fff;text-decoration:none;font-weight:900;transition:transform .2s,background .2s}
+.customer-stores-btn:hover{background:#a52d23;transform:translateY(-2px)}
+.customer-stores-mark{position:relative;flex:0 0 180px;width:180px;height:150px;display:grid;place-items:center;color:#bd382a}
+.customer-stores-mark:before{content:"";position:absolute;width:145px;height:145px;border-radius:42px;background:#bd382a0d;transform:rotate(12deg)}
+.customer-stores-mark .store-window,.customer-stores-mark .store-app{position:absolute;display:grid;place-items:center;border:1px solid #f1c8c3;border-radius:22px;background:#fff;box-shadow:0 12px 30px #27344712;font-size:58px;width:105px;height:105px}
+.customer-stores-mark .store-window{top:5px;right:0}
+.customer-stores-mark .store-app{bottom:0;left:0;width:82px;height:82px;border-radius:19px;font-size:43px;background:#fff5f3}
+@media(max-width:600px){.customer-stores-section{padding-top:4px;padding-bottom:25px}.customer-stores-card{padding:23px 19px;border-radius:20px;gap:10px}.customer-stores-mark{display:none}.customer-stores-copy h2{font-size:24px;line-height:1.5}.customer-stores-copy p{font-size:14px;line-height:1.9;margin-bottom:18px}.customer-stores-btn{width:100%;font-size:14px;min-height:47px}}
 
 
-/* Small refinements requested for the Kafi landing page */
-.phone-badges { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
-.floating-note { white-space: nowrap; }
-.note-pos { top: 18%; right: -2%; }
-.note-store { top: 34%; left: -5%; }
-.note-remote { bottom: 32%; right: -5%; }
-.note-delivery { bottom: 15%; left: -3%; }
-.floating-note span { display: inline-grid; place-items: center; min-width: 25px; height: 25px; border-radius: 8px; background: #fff0ed; color: var(--primary-color); margin-left: 7px; font-size: .9rem; }
-.store-section-prominent { background: linear-gradient(135deg,#fff0ed 0%,#fff8f6 42%,#f1f4f8 100%); border-top: 1px solid #f5d9d4; border-bottom: 1px solid #f5d9d4; }
-.store-section-prominent .store-panel { position: relative; padding: 60px; border: 2px solid rgba(189,56,42,.17); box-shadow: 0 25px 75px rgba(120,43,34,.12); background: rgba(255,255,255,.96); }
-.store-section-prominent .store-copy { text-align: center; }
-.store-section-prominent .store-copy .eyebrow { margin-left: auto; margin-right: auto; }
-.store-section-prominent .store-tags { justify-content: center; }
-.store-cta-wrap { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
-.store-cta { min-width: 250px; justify-content: center; box-shadow: 0 14px 30px rgba(189,56,42,.23); }
-.download-symbol { position: relative; }
-.download-symbol-windows { display: block; width: 27px; height: 27px; border: 0; border-radius: 0; background: none; flex: 0 0 48px; }
-.download-symbol-windows::before, .download-symbol-windows::after { content: ""; position: absolute; width: 12px; height: 12px; background: #fff; top: 4px; right: 4px; box-shadow: -14px 0 #fff, 0 14px #fff, -14px 14px #fff; transform: skewY(-5deg); }
-.download-symbol-windows::after { display: none; }
-.download-symbol-android { display: block; width: 27px; height: 30px; border: 0; border-radius: 0; background: none; flex: 0 0 48px; }
-.download-symbol-android::before { content: ""; position: absolute; width: 24px; height: 17px; top: 7px; right: 1px; background: #fff; border-radius: 11px 11px 4px 4px; }
-.download-symbol-android::after { content: ""; position: absolute; width: 4px; height: 9px; top: 22px; right: 5px; background: #fff; border-radius: 0 0 3px 3px; box-shadow: 14px 0 #fff; }
-.download-symbol-android span::before, .download-symbol-android span::after { content: ""; position: absolute; width: 2px; height: 7px; top: 1px; right: 7px; background: #fff; transform: rotate(-28deg); border-radius: 2px; z-index: 2; }
-.download-symbol-android span::after { right: 18px; transform: rotate(28deg); }
-@media (max-width: 900px) {
-    .note-pos { right: 0; }
-    .note-store { left: 0; }
-    .note-remote { right: 0; }
-    .note-delivery { left: 0; }
-    .store-section-prominent .store-panel { padding: 40px 28px; }
+/* إصلاح تنسيق كرت متاجر عملاء كافي - محددات أقوى لمنع تعارض التنسيقات */
+section.customer-stores-section {
+    display: block;
+    width: 100%;
+    padding: 48px 0;
+    background: #f8fafc;
 }
-@media (max-width: 600px) {
-    .floating-note { font-size: .78rem; padding: 9px 10px; }
-    .note-pos { top: 12%; right: -2%; }
-    .note-store { top: 30%; left: -2%; }
-    .note-remote { bottom: 30%; right: -2%; }
-    .note-delivery { bottom: 12%; left: -2%; }
-    .store-section-prominent .store-panel { padding: 30px 20px; }
-    .store-cta { width: 100%; }
-}
-
-
-/* App download cards: separate the two Kafi apps clearly */
-.download-app-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    margin-top: 38px;
-    text-align: right;
-    align-items: stretch;
-}
-.download-app-card {
-    position: relative;
-    padding: 34px;
-    border: 1px solid #f0d9d5;
-    border-radius: 24px;
-    background: #fff;
-    box-shadow: 0 18px 45px rgba(35, 25, 24, .07);
-    overflow: hidden;
-}
-.download-app-pos { border-top: 5px solid var(--primary-color); }
-.download-app-remote { border-top: 5px solid #26364d; }
-.download-app-number {
-    position: absolute;
-    top: 20px;
-    left: 22px;
-    color: #d9a7a0;
-    font-size: .9rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-.download-app-icon {
-    display: grid;
-    place-items: center;
-    width: 54px;
-    height: 54px;
-    margin-bottom: 15px;
-    border-radius: 16px;
-    background: #fff0ed;
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    font-weight: 800;
-}
-.download-app-remote .download-app-icon { background: #edf2f8; color: #26364d; }
-.download-app-card h3 { color: var(--text-main); font-size: 1.65rem; font-weight: 900; margin-bottom: 8px; }
-.download-app-card .download-app-purpose { color: var(--primary-color); font-size: 1.04rem; line-height: 1.7; font-weight: 800; margin-bottom: 8px; }
-.download-app-card .download-app-description { color: var(--text-light); font-size: .95rem; line-height: 1.8; margin-bottom: 22px; }
-.download-app-card .download-buttons { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 0; }
-.download-app-card .btn-download-big { width: 100%; min-width: 0; justify-content: flex-start; padding: 16px 18px; border-radius: 15px; font-size: 1rem; }
-.download-app-card .download-symbol { width: 44px; height: 44px; flex-basis: 44px; border-radius: 12px; background: rgba(255,255,255,.15); }
-.download-app-card .download-symbol-windows { flex-basis: 44px; }
-.download-app-card .download-symbol-android { flex-basis: 44px; }
-.download-coming-soon { cursor: default; }
-.download-coming-soon:hover { transform: none; }
-.download-app-remote .download-coming-soon { background: #26364d; box-shadow: 0 12px 30px rgba(38,54,77,.15); }
-
-/* Clean, balanced Android robot mark */
-.download-symbol-android { position: relative; width: 26px; height: 30px; flex: 0 0 44px; }
-.download-symbol-android::before {
-    content: ""; position: absolute; width: 25px; height: 17px; top: 8px; right: 0;
-    background: #fff; border-radius: 13px 13px 5px 5px;
-}
-.download-symbol-android::after {
-    content: ""; position: absolute; width: 5px; height: 9px; top: 24px; right: 4px;
-    background: #fff; border-radius: 0 0 3px 3px; box-shadow: 13px 0 #fff;
-}
-.download-symbol-android span::before {
-    content: ""; position: absolute; z-index: 2; width: 3px; height: 3px; top: 14px; right: 6px;
-    background: var(--primary-color); border-radius: 50%; box-shadow: 10px 0 var(--primary-color);
-}
-.download-symbol-android span::after {
-    content: ""; position: absolute; width: 2px; height: 7px; top: 2px; right: 7px;
-    background: #fff; border-radius: 2px; transform: rotate(-30deg); box-shadow: 10px 0 #fff;
-}
-@media (max-width: 850px) {
-    .download-app-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 600px) {
-    .download-app-card { padding: 27px 20px; }
-    .download-app-number { top: 15px; left: 16px; }
-    .download-app-card .btn-download-big { padding: 15px 13px; }
-}
-
-
-/* Store section heading + separate pricing link */
-.store-section-heading {
-    text-align: center;
-    margin: 0 auto 24px;
-}
-.store-section-heading .eyebrow {
-    margin-left: auto;
-    margin-right: auto;
-}
-.store-section-heading h2 {
-    margin: 10px 0 8px;
-}
-.store-section-heading p {
-    color: var(--muted);
-    margin: 0;
-    line-height: 1.8;
-}
-.pricing-link-card {
-    width: min(760px, 100%);
-    margin: 0 auto 28px;
-    padding: 14px 18px;
-    border: 1px solid #e7eaf0;
-    border-radius: 18px;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(16,24,40,.06);
+section.customer-stores-section .customer-stores-card {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 18px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    padding: 36px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 26px;
+    background: linear-gradient(125deg, #ffffff 0%, #fffafa 62%, #fff0ee 100%);
+    box-shadow: 0 16px 42px rgba(15, 23, 42, .08);
+    text-align: right;
 }
-.pricing-link-card span {
-    color: var(--ink);
-    font-weight: 700;
+section.customer-stores-section .customer-stores-copy { position: relative; z-index: 2; flex: 1; max-width: 720px; }
+section.customer-stores-section .customer-stores-copy .eyebrow {
+    display: inline-block; margin: 0 0 14px; padding: 8px 16px;
+    border: 1px solid #f1d8d5; border-radius: 999px;
+    background: #fff0ee; color: #bd382a; font-size: 15px; font-weight: 800;
 }
-.pricing-link-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 22px;
-    border-radius: 13px;
-    background: #29394d;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 800;
-    box-shadow: 0 10px 22px rgba(41,57,77,.18);
-    transition: transform .2s ease, box-shadow .2s ease;
+section.customer-stores-section .customer-stores-copy h2 {
+    margin: 0 0 14px; color: #1e293b; font-size: clamp(25px, 3vw, 36px);
+    font-weight: 900; line-height: 1.5;
 }
-.pricing-link-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 28px rgba(41,57,77,.23);
+section.customer-stores-section .customer-stores-copy p {
+    margin: 0 0 24px; color: #475569; font-size: 17px; line-height: 1.9;
 }
-
-/* Cleaner Android mark */
-.download-symbol-android {
-    width: 30px;
-    height: 31px;
-    flex: 0 0 48px;
+section.customer-stores-section a.customer-stores-btn,
+section.customer-stores-section a.customer-stores-btn:visited {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    min-height: 50px; padding: 13px 24px; border: 0; border-radius: 14px;
+    background: #bd382a; color: #fff; text-decoration: none; font-weight: 800;
+    box-shadow: 0 8px 18px rgba(189, 56, 42, .18);
+    transition: transform .2s ease, background .2s ease;
 }
-.download-symbol-android::before {
-    width: 25px;
-    height: 18px;
-    top: 8px;
-    right: 1px;
-    border-radius: 12px 12px 5px 5px;
+section.customer-stores-section a.customer-stores-btn:hover {
+    background: #a52d23; color: #fff; text-decoration: none; transform: translateY(-2px);
 }
-.download-symbol-android::after {
-    width: 5px;
-    height: 9px;
-    top: 24px;
-    right: 5px;
-    border-radius: 0 0 3px 3px;
-    box-shadow: 15px 0 #fff;
+section.customer-stores-section .customer-stores-mark {
+    position: relative; flex: 0 0 180px; width: 180px; height: 150px;
+    display: grid; place-items: center; color: #bd382a;
 }
-.download-symbol-android span::before,
-.download-symbol-android span::after {
-    width: 2px;
-    height: 7px;
-    top: 2px;
-    right: 8px;
+section.customer-stores-section .customer-stores-mark:before {
+    content: ""; position: absolute; width: 145px; height: 145px;
+    border-radius: 42px; background: rgba(189, 56, 42, .07); transform: rotate(12deg);
 }
-.download-symbol-android span::after { right: 19px; }
-
+section.customer-stores-section .customer-stores-mark .store-window,
+section.customer-stores-section .customer-stores-mark .store-app {
+    position: absolute; display: grid; place-items: center;
+    border: 1px solid #f1c8c3; border-radius: 22px; background: #fff;
+    box-shadow: 0 12px 30px rgba(39, 52, 71, .08);
+    font-size: 58px; width: 105px; height: 105px;
+}
+section.customer-stores-section .customer-stores-mark .store-window { top: 5px; right: 0; }
+section.customer-stores-section .customer-stores-mark .store-app {
+    bottom: 0; left: 0; width: 82px; height: 82px;
+    border-radius: 19px; font-size: 43px; background: #fff5f3;
+}
 @media (max-width: 600px) {
-    .store-section-heading { margin-bottom: 20px; }
-    .store-section-heading h2 { font-size: 1.65rem; }
-    .pricing-link-card { padding: 14px; gap: 12px; }
-    .pricing-link-card > span { width: 100%; text-align: center; }
-    .pricing-link-btn { width: min(320px, 100%); justify-content: center; }
-}
-
-
-/* مستقل: أسعار اشتراكات النظام، ولا علاقة له بمتجر كافي */
-.system-pricing-promo {
-    background: #f7f8fa;
-    padding-top: 28px;
-    padding-bottom: 28px;
-}
-.system-pricing-card {
-    width: min(820px, 100%);
-    margin: 0 auto;
-    padding: 30px 28px;
-    background: #fff;
-    border: 2px solid rgba(189,56,42,.14);
-    border-radius: 24px;
-    text-align: center;
-    box-shadow: 0 16px 45px rgba(16,24,40,.07);
-}
-.system-pricing-card .eyebrow {
-    margin-left: auto;
-    margin-right: auto;
-}
-.system-pricing-card h2 {
-    margin: 10px 0 8px;
-    font-size: clamp(1.65rem, 3vw, 2.2rem);
-    font-weight: 900;
-    color: #182230;
-}
-.system-pricing-card p {
-    margin: 0 0 20px;
-    color: var(--muted);
-    line-height: 1.8;
-}
-.system-pricing-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-width: 260px;
-    padding: 15px 24px;
-    border-radius: 15px;
-    background: #29394d;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 900;
-    box-shadow: 0 12px 28px rgba(41,57,77,.20);
-    transition: transform .2s ease, box-shadow .2s ease;
-}
-.system-pricing-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 32px rgba(41,57,77,.25);
-}
-
-/* استخدام أيقونات SVG الموحدة؛ نفس الأيقونة التي كانت تعمل بشكل صحيح */
-.download-symbol svg {
-    display: block;
-    width: 28px;
-    height: 28px;
-    fill: #fff;
-}
-.download-symbol-windows,
-.download-symbol-android {
-    display: grid !important;
-    place-items: center;
-}
-.download-symbol-windows::before,
-.download-symbol-windows::after,
-.download-symbol-android::before,
-.download-symbol-android::after,
-.download-symbol-android span::before,
-.download-symbol-android span::after {
-    display: none !important;
-    content: none !important;
-}
-.download-symbol-android svg {
-    width: 29px;
-    height: 29px;
-}
-.download-symbol-android svg circle {
-    fill: var(--primary-color);
-}
-
-@media (max-width: 600px) {
-    .system-pricing-promo { padding-top: 18px; padding-bottom: 18px; }
-    .system-pricing-card { padding: 24px 18px; border-radius: 20px; }
-    .system-pricing-btn { width: min(320px,100%); }
+    section.customer-stores-section { padding: 30px 0; }
+    section.customer-stores-section .customer-stores-card {
+        display: block; padding: 25px 20px; border-radius: 22px; gap: 0;
+    }
+    section.customer-stores-section .customer-stores-mark { display: none; }
+    section.customer-stores-section .customer-stores-copy h2 { font-size: 25px; line-height: 1.5; }
+    section.customer-stores-section .customer-stores-copy p { font-size: 16px; line-height: 1.9; }
+    section.customer-stores-section a.customer-stores-btn { width: 100%; font-size: 15px; }
 }
