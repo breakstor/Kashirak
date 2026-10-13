@@ -205,3 +205,80 @@ body {
 .customer-stores-mark .store-window{top:5px;right:0}
 .customer-stores-mark .store-app{bottom:0;left:0;width:82px;height:82px;border-radius:19px;font-size:43px;background:#fff5f3}
 @media(max-width:600px){.customer-stores-section{padding-top:4px;padding-bottom:25px}.customer-stores-card{padding:23px 19px;border-radius:20px;gap:10px}.customer-stores-mark{display:none}.customer-stores-copy h2{font-size:24px;line-height:1.5}.customer-stores-copy p{font-size:14px;line-height:1.9;margin-bottom:18px}.customer-stores-btn{width:100%;font-size:14px;min-height:47px}}
+
+
+/* إصلاح تنسيق كرت متاجر عملاء كافي - محددات أقوى لمنع تعارض التنسيقات */
+section.customer-stores-section {
+    display: block;
+    width: 100%;
+    padding: 48px 0;
+    background: #f8fafc;
+}
+section.customer-stores-section .customer-stores-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    padding: 36px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 26px;
+    background: linear-gradient(125deg, #ffffff 0%, #fffafa 62%, #fff0ee 100%);
+    box-shadow: 0 16px 42px rgba(15, 23, 42, .08);
+    text-align: right;
+}
+section.customer-stores-section .customer-stores-copy { position: relative; z-index: 2; flex: 1; max-width: 720px; }
+section.customer-stores-section .customer-stores-copy .eyebrow {
+    display: inline-block; margin: 0 0 14px; padding: 8px 16px;
+    border: 1px solid #f1d8d5; border-radius: 999px;
+    background: #fff0ee; color: #bd382a; font-size: 15px; font-weight: 800;
+}
+section.customer-stores-section .customer-stores-copy h2 {
+    margin: 0 0 14px; color: #1e293b; font-size: clamp(25px, 3vw, 36px);
+    font-weight: 900; line-height: 1.5;
+}
+section.customer-stores-section .customer-stores-copy p {
+    margin: 0 0 24px; color: #475569; font-size: 17px; line-height: 1.9;
+}
+section.customer-stores-section a.customer-stores-btn,
+section.customer-stores-section a.customer-stores-btn:visited {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    min-height: 50px; padding: 13px 24px; border: 0; border-radius: 14px;
+    background: #bd382a; color: #fff; text-decoration: none; font-weight: 800;
+    box-shadow: 0 8px 18px rgba(189, 56, 42, .18);
+    transition: transform .2s ease, background .2s ease;
+}
+section.customer-stores-section a.customer-stores-btn:hover {
+    background: #a52d23; color: #fff; text-decoration: none; transform: translateY(-2px);
+}
+section.customer-stores-section .customer-stores-mark {
+    position: relative; flex: 0 0 180px; width: 180px; height: 150px;
+    display: grid; place-items: center; color: #bd382a;
+}
+section.customer-stores-section .customer-stores-mark:before {
+    content: ""; position: absolute; width: 145px; height: 145px;
+    border-radius: 42px; background: rgba(189, 56, 42, .07); transform: rotate(12deg);
+}
+section.customer-stores-section .customer-stores-mark .store-window,
+section.customer-stores-section .customer-stores-mark .store-app {
+    position: absolute; display: grid; place-items: center;
+    border: 1px solid #f1c8c3; border-radius: 22px; background: #fff;
+    box-shadow: 0 12px 30px rgba(39, 52, 71, .08);
+    font-size: 58px; width: 105px; height: 105px;
+}
+section.customer-stores-section .customer-stores-mark .store-window { top: 5px; right: 0; }
+section.customer-stores-section .customer-stores-mark .store-app {
+    bottom: 0; left: 0; width: 82px; height: 82px;
+    border-radius: 19px; font-size: 43px; background: #fff5f3;
+}
+@media (max-width: 600px) {
+    section.customer-stores-section { padding: 30px 0; }
+    section.customer-stores-section .customer-stores-card {
+        display: block; padding: 25px 20px; border-radius: 22px; gap: 0;
+    }
+    section.customer-stores-section .customer-stores-mark { display: none; }
+    section.customer-stores-section .customer-stores-copy h2 { font-size: 25px; line-height: 1.5; }
+    section.customer-stores-section .customer-stores-copy p { font-size: 16px; line-height: 1.9; }
+    section.customer-stores-section a.customer-stores-btn { width: 100%; font-size: 15px; }
+}
