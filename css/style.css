@@ -188,3 +188,20 @@ body {
     padding: 30px 0;
     font-size: 14px;
 }
+
+
+/* كرت التعريف بمتاجر عملاء كافي */
+.customer-stores-section{padding-top:12px;padding-bottom:38px;background:#f8fafc}
+.customer-stores-card{position:relative;display:flex;align-items:center;justify-content:space-between;gap:30px;overflow:hidden;padding:clamp(25px,4vw,44px);border:1px solid #e2e8f0;border-radius:26px;background:linear-gradient(125deg,#fff 0%,#f8fbff 62%,#eff6ff 100%);box-shadow:0 16px 42px rgba(15,23,42,.07)}
+.customer-stores-copy{position:relative;z-index:2;max-width:720px}
+.customer-stores-copy .eyebrow{display:inline-block;margin-bottom:12px;padding:6px 13px;border-radius:50px;background:#fff0ee;color:#bd382a;font-size:14px;font-weight:800}
+.customer-stores-copy h2{margin:0 0 12px;color:#1e293b;font-size:clamp(24px,3vw,34px);font-weight:900;line-height:1.45}
+.customer-stores-copy p{max-width:680px;margin:0 0 22px;color:#64748b;font-size:16px;line-height:1.95}
+.customer-stores-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:49px;padding:12px 22px;border-radius:13px;background:#bd382a;color:#fff;text-decoration:none;font-weight:900;transition:transform .2s,background .2s}
+.customer-stores-btn:hover{background:#a52d23;transform:translateY(-2px)}
+.customer-stores-mark{position:relative;flex:0 0 180px;width:180px;height:150px;display:grid;place-items:center;color:#bd382a}
+.customer-stores-mark:before{content:"";position:absolute;width:145px;height:145px;border-radius:42px;background:#bd382a0d;transform:rotate(12deg)}
+.customer-stores-mark .store-window,.customer-stores-mark .store-app{position:absolute;display:grid;place-items:center;border:1px solid #f1c8c3;border-radius:22px;background:#fff;box-shadow:0 12px 30px #27344712;font-size:58px;width:105px;height:105px}
+.customer-stores-mark .store-window{top:5px;right:0}
+.customer-stores-mark .store-app{bottom:0;left:0;width:82px;height:82px;border-radius:19px;font-size:43px;background:#fff5f3}
+@media(max-width:600px){.customer-stores-section{padding-top:4px;padding-bottom:25px}.customer-stores-card{padding:23px 19px;border-radius:20px;gap:10px}.customer-stores-mark{display:none}.customer-stores-copy h2{font-size:24px;line-height:1.5}.customer-stores-copy p{font-size:14px;line-height:1.9;margin-bottom:18px}.customer-stores-btn{width:100%;font-size:14px;min-height:47px}}
