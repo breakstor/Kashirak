@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#bd382a">
+<meta name="description" content="متجر تطبيقات كافي — حمّل تطبيقات متاجر عملائنا المميزة وتسوق أونلاين مباشرة.">
+<title>متجر تطبيقات كافي</title>
+<style>
+:root{--brand:#bd382a;--brand-dark:#a52d23;--ink:#273447;--muted:#737d8a;--bg:#f7f7f8;--line:#e9e9ed;--soft:#fff0ee;--shadow:0 8px 24px rgba(39,52,71,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:18px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Tajawal","Cairo",Tahoma,Arial,sans-serif;line-height:1.7;overflow-wrap:anywhere}img{max-width:100%}a{color:inherit;-webkit-tap-highlight-color:transparent}
+.container{width:min(1120px,calc(100% - 32px));margin-inline:auto}
+header{background:#fff;border-bottom:1px solid var(--line)}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-size:27px;font-weight:900;color:var(--brand);text-decoration:none;white-space:nowrap}
+.nav-link,.button{background:var(--brand);color:#fff;text-decoration:none;font-weight:900;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,transform .2s}.nav-link{padding:9px 16px;border-radius:99px;white-space:nowrap}.nav-link:hover,.button:hover{background:var(--brand-dark);transform:translateY(-1px)}
+.hero{text-align:center;padding:50px 0 34px;background:radial-gradient(ellipse at top,#fff 0%,#fff6f5 58%,var(--bg) 100%)}.eyebrow{display:inline-block;padding:6px 14px;border:1px solid #f0d0cc;border-radius:99px;background:var(--soft);color:var(--brand);font-size:14px;font-weight:800;margin-bottom:13px}.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.3;margin:0;font-weight:900}.hero p{max-width:690px;margin:14px auto 0;color:var(--muted);font-size:clamp(16px,2vw,20px)}
+.categories{display:flex;justify-content:flex-start;flex-wrap:nowrap;gap:8px;margin-top:23px;padding:2px 1px 9px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}.categories a{flex:0 0 auto;background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 14px;text-decoration:none;font-weight:800;font-size:14px;white-space:nowrap}.categories a:hover,.categories a:focus-visible{border-color:var(--brand);color:var(--brand)}
+main{padding:10px 0 42px}.category{margin:25px 0 34px;scroll-margin-top:18px}.heading{display:flex;align-items:center;gap:11px;font-size:clamp(22px,3vw,27px);line-height:1.4;font-weight:900;margin:0 0 13px}.heading:before{content:"";height:32px;width:6px;background:var(--brand);border-radius:8px;flex:0 0 6px}.section-desc{color:var(--muted);margin:0 0 16px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:19px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0;transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:0 13px 30px rgba(39,52,71,.11)}
+.app-top{display:flex;align-items:center;gap:12px;min-width:0}.app-icon{width:70px;height:70px;flex:0 0 70px;object-fit:cover;border:1px solid var(--line);border-radius:17px;background:#f2f2f4}.app-top>div{min-width:0}.app-title{font-size:19px;line-height:1.4;font-weight:900;margin:0;overflow-wrap:anywhere}.app-type{font-size:13px;color:var(--brand);font-weight:800;margin-top:4px}.desc{color:var(--muted);font-size:15px;line-height:1.8;margin:14px 0 18px;flex:1}.button{width:100%;min-height:48px;padding:11px 14px;text-align:center;font-size:15px;line-height:1.45}.button svg{width:18px;height:18px;flex:0 0 18px}
+.cta{margin-top:38px;padding:36px 22px;text-align:center;background:var(--ink);color:#fff;border-radius:24px}.cta h2{font-size:clamp(25px,4vw,36px);line-height:1.35;font-weight:900;margin:0}.cta p{color:#d9dee5;max-width:620px;margin:10px auto 21px}.cta .button{width:auto;min-width:220px;padding-inline:24px}footer{text-align:center;color:var(--muted);font-size:13px;padding:22px 12px 28px}
+
+/* سلايدر الإعلانات بين قائمة الأقسام وتصنيفات المتاجر */
+.ad-slider{position:relative;margin:18px auto 24px;overflow:hidden;border-radius:18px;background:#eee;box-shadow:var(--shadow);isolation:isolate}
+.ad-slider-track{display:flex;direction:ltr;transition:transform .55s ease;will-change:transform}
+.ad-slide{display:block;flex:0 0 100%;width:100%;aspect-ratio:16/9;overflow:hidden}
+.ad-slide img{display:block;width:100%;height:100%;object-fit:cover}
+.ad-slider-dots{position:absolute;inset:auto 0 10px;display:flex;justify-content:center;gap:7px;direction:ltr}
+.ad-slider-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.65);box-shadow:0 1px 5px #3335;cursor:pointer}
+.ad-slider-dot[aria-current="true"]{width:21px;border-radius:99px;background:#fff}
+.ad-slider-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;border-radius:50%;background:#ffffffd9;color:var(--brand);font-size:22px;font-weight:900;display:grid;place-items:center;cursor:pointer}
+.ad-slider-prev{left:10px}.ad-slider-next{right:10px}
+@media(max-width:600px){.ad-slider{margin:13px auto 19px;border-radius:13px}.ad-slider-dots{bottom:6px}.ad-slider-arrow{width:30px;height:30px;font-size:19px}.ad-slider-prev{left:7px}.ad-slider-next{right:7px}}
+@media(prefers-reduced-motion:reduce){.ad-slider-track{transition:none}}
+
+@media(max-width:900px){.container{width:calc(100% - 30px)}.hero{padding:42px 0 29px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{padding:17px}.app-icon{width:64px;height:64px;flex-basis:64px}}
+@media(max-width:600px){
+.container{width:calc(100% - 24px)}.nav{min-height:62px;gap:8px}.logo{font-size:23px}.nav-link{font-size:12px;padding:8px 11px}
+.hero{padding:33px 0 22px}.eyebrow{font-size:12px;padding:5px 11px;margin-bottom:10px}.hero h1{font-size:clamp(29px,8.5vw,37px);line-height:1.35;letter-spacing:0}.hero p{font-size:15px;line-height:1.9;margin-top:11px;max-width:360px}
+.categories{margin-top:17px;gap:7px;padding-bottom:8px}.categories a{font-size:13px;padding:7px 12px}
+main{padding-top:4px;padding-bottom:28px}.category{margin:23px 0 29px}.heading{font-size:21px;gap:9px;margin-bottom:10px;line-height:1.5}.heading:before{height:28px;width:5px;flex-basis:5px}.section-desc{font-size:13px;line-height:1.8;margin-bottom:13px}
+.grid{grid-template-columns:minmax(0,1fr);gap:12px}.card{padding:15px;border-radius:17px;box-shadow:0 5px 17px rgba(39,52,71,.055)}.app-top{gap:11px;align-items:center}.app-icon{width:61px;height:61px;flex-basis:61px;border-radius:15px}.app-title{font-size:17px;line-height:1.45}.app-type{font-size:12px;line-height:1.6}.desc{font-size:14px;line-height:1.8;margin:12px 0 15px}.button{min-height:47px;font-size:14px;border-radius:12px}
+.cta{margin-top:30px;padding:28px 17px;border-radius:20px}.cta h2{font-size:25px;line-height:1.45}.cta p{font-size:14px;line-height:1.9;margin:9px auto 18px}.cta .button{width:100%;min-width:0}footer{font-size:12px;padding:19px 10px 24px}
+}
+@media(max-width:360px){.container{width:calc(100% - 20px)}.logo{font-size:21px}.nav-link{font-size:11px;padding:7px 9px}.hero h1{font-size:28px}.app-icon{width:55px;height:55px;flex-basis:55px}.app-title{font-size:16px}.card{padding:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="container nav"><a class="logo" href="https://www.kaffii-sd.com">كافي<span aria-hidden="true">.</span></a><a class="nav-link" href="https://www.kaffii-sd.com">موقع كافي الرئيسي</a></div></header>
+<section class="hero"><div class="container">
+<span class="eyebrow">تسوّق من متاجر كافي</span>
+<h1>متجر تطبيقات كافي</h1>
+<p>قم بتحميل تطبيقات متاجر عملائنا المميزة وابدأ بالتسوق أونلاين مباشرة.</p>
+<nav class="categories" aria-label="تصنيفات المتاجر"><a href="#groceries">بقالات</a><a href="#perfumes">ملابس واحزية وعطور</a><a href="#electronics">محلات إلكترونيات</a><a href="#restaurants">مطاعم</a><a href="#other">متاجر أخرى</a></nav>
+</div></section>
+<section class="container" aria-label="الإعلانات والعروض">
+  <div class="ad-slider" id="adSlider" aria-roledescription="carousel" aria-label="إعلانات المتاجر">
+    <div class="ad-slider-track" id="adSliderTrack">
+      <a class="ad-slide" href="#groceries" aria-label="الإعلان الأول"><img src="slider/slider1.jpg" alt="إعلان المتجر الأول" loading="eager"></a>
+      <a class="ad-slide" href="#perfumes" aria-label="الإعلان الثاني"><img src="slider/slider2.jpg" alt="إعلان المتجر الثاني" loading="lazy"></a>
+      <a class="ad-slide" href="#electronics" aria-label="الإعلان الثالث"><img src="slider/slider3.jpg" alt="إعلان المتجر الثالث" loading="lazy"></a>
+    </div>
+    <button class="ad-slider-arrow ad-slider-prev" type="button" aria-label="الإعلان السابق">‹</button>
+    <button class="ad-slider-arrow ad-slider-next" type="button" aria-label="الإعلان التالي">›</button>
+    <div class="ad-slider-dots" aria-label="اختيار الإعلان">
+      <button class="ad-slider-dot" type="button" aria-label="الإعلان الأول" aria-current="true"></button>
+      <button class="ad-slider-dot" type="button" aria-label="الإعلان الثاني" aria-current="false"></button>
+      <button class="ad-slider-dot" type="button" aria-label="الإعلان الثالث" aria-current="false"></button>
+    </div>
+  </div>
+</section>
+<main class="container">
+<!-- البنية: section.category = قسم رئيسي/تصنيف. article.card = كرت متجر أو تطبيق داخل التصنيف. لإضافة متجر انسخ كرت article.card داخل grid للتصنيف المناسب، ثم حدّث src للأيقونة والاسم والوصف ورابط href فقط. -->
+<section class="category" id="groceries"><h2 class="heading">البقالات والمواد الغذائية</h2><p class="section-desc">تسوّق احتياجاتك اليومية من متاجر كافي.</p><div class="grid">
+<!-- أيقونة البقالة: icons/grocery-store.png | رابط المتجر: عدّل href في زر الزيارة -->
+<article class="card"><div class="app-top"><img class="app-icon" src="icons/wad_alam.png" alt="أيقونة متجر البقالة"><div><h3 class="app-title"> ود العم ماركت</h3><div class="app-type"> معاك في توفير كل احتياجات المنزل</div></div></div><p class="desc">بقالة ود العم لجميع احتياجات المنزل </p><a class="button" href="https://github.com/breakstor/kaffii-apps/releases/download/Wad_alam/wad_alam.apk" target="_blank" rel="noopener">اضغط للتحميل <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+</div></section>
+<section class="category" id="perfumes"><h2 class="heading">الملابس والاحزية والعطور</h2><p class="section-desc">اكتشف العطور ومنتجات العناية من متاجر كافي.</p><div class="grid">
+<!-- أيقونة العطور: icons/perfume-store.png | رابط المتجر: عدّل href في زر الزيارة -->
+<article class="card"><div class="app-top"><img class="app-icon" src="icons/gawhra.png" alt="أيقونة متجر العطور"><div><h3 class="app-title">الجوهرة للكلف</h3><div class="app-type">متجر الجوهرة للكلف </div></div></div><p class="desc">خرز - سكسك - كلف - خيوط - وجميع مستلزمات الثياب السودانية </p><a class="button" href="https://github.com/breakstor/kaffii-apps/releases/download/gawhra/gawhara.apk" target="_blank" rel="noopener">اضغط للتحميل <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+</div></section>
+<section class="category" id="electronics"><h2 class="heading">محلات الإلكترونيات</h2><p class="section-desc">أجهزة وإكسسوارات وتقنيات من متاجر متخصصة.</p><div class="grid">
+<!-- أيقونة الإلكترونيات: icons/electronics-store.png | رابط المتجر: عدّل href في زر الزيارة -->
+<article class="card"><div class="app-top"><img class="app-icon" src="icons/break_store.png" alt="أيقونة متجر الإلكترونيات"><div><h3 class="app-title"> بريك ستور </h3><div class="app-type">أجهزة وإكسسوارات</div></div></div><p class="desc">متجر لبيع جميع المنتجات التقنية من بلاي ستيشن وكمبيوتر ولابتوب وجميع مستلزماتها</p><a class="button" href="https://github.com/breakstor/kaffii-apps/releases/download/Break_store/Break_Store.apk" target="_blank" rel="noopener">اضغط للتحميل <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+</div></section>
+<section class="category" id="restaurants"><h2 class="heading">المطاعم والمأكولات</h2><p class="section-desc">تصفّح قوائم الطعام واطلب ما تفضله مباشرة.</p><div class="grid">
+<!-- أيقونة المطعم: icons/restaurant.png | رابط المتجر: عدّل href في زر الطلب -->
+<article class="card"><div class="app-top"><img class="app-icon" src="icons/restaurant.png" alt="أيقونة المطعم"><div><h3 class="app-title">اسم المطعم</h3><div class="app-type">مطعم ومأكولات</div></div></div><p class="desc">أضف وصفاً للمطعم ونوع الأطعمة أو الوجبات التي يقدمها.</p><a class="button" href="https://www.kaffii-sd.com" target="_blank" rel="noopener">اضغط للتحميل <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+</div></section>
+<section class="category" id="other"><h2 class="heading">متاجر أخرى</h2><p class="section-desc">المزيد من المتاجر والخدمات المتنوعة.</p><div class="grid">
+<!-- أيقونة المتجر الآخر: icons/other-store.png | رابط المتجر: عدّل href في زر الزيارة -->
+<article class="card"><div class="app-top"><img class="app-icon" src="icons/other-store.png" alt="أيقونة متجر"><div><h3 class="app-title">اسم المتجر</h3><div class="app-type">تسوّق أونلاين</div></div></div><p class="desc">اكتب وصفاً قصيراً يوضح طبيعة المتجر وما يقدمه للعملاء.</p><a class="button" href="https://www.kaffii-sd.com" target="_blank" rel="noopener">اضغط للتحميل <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></article>
+</div></section>
+<section class="cta"><h2>احصل على متجرك وتطبيقك الآن</h2><p>أنشئ متجرك الإلكتروني عبر كافي، واعرض منتجاتك لعملائك وابدأ استقبال الطلبات أونلاين.</p><a class="button" href="https://www.kaffii-sd.com" target="_blank" rel="noopener">اضغط للخصول علي تطبيقك</a></section>
+</main>
+<footer>© كافي — متاجر إلكترونية وتجربة تسوّق أسهل.</footer>
+
+<script>
+(() => {
+  const slider = document.getElementById('adSlider');
+  if (!slider) return;
+  const track = document.getElementById('adSliderTrack');
+  const slides = Array.from(track.querySelectorAll('.ad-slide'));
+  const dots = Array.from(slider.querySelectorAll('.ad-slider-dot'));
+  const prev = slider.querySelector('.ad-slider-prev');
+  const next = slider.querySelector('.ad-slider-next');
+  let index = 0, timer;
+  const show = n => {
+    index = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+  };
+  const stop = () => { if (timer) clearInterval(timer); };
+  const start = () => { stop(); timer = setInterval(() => show(index + 1), 4500); };
+  prev.addEventListener('click', () => { show(index - 1); start(); });
+  next.addEventListener('click', () => { show(index + 1); start(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); start(); }));
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+  slider.addEventListener('focusin', stop);
+  slider.addEventListener('focusout', start);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  show(0); start();
+})();
+</script>
+
+</body></html>
