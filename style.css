@@ -1366,106 +1366,63 @@ a { -webkit-tap-highlight-color: transparent; }
     .system-pricing-btn { width: min(320px,100%); }
 }
 
-/* ===== تصميم بسيط ومختصر لقسم تعرف على عملائنا ===== */
+
+/* ===== قسم تعرف على عملائنا: نفس تصميم قسم أسعار الاشتراكات ===== */
 .customer-stores-section {
-    width: 100%;
-    padding: 38px 20px !important;
-    box-sizing: border-box;
-    direction: rtl;
-    background: #fff !important;
+    background: #f7f8fa;
+    padding-top: 28px;
+    padding-bottom: 28px;
 }
-.customer-stores-section .container {
-    width: 100%;
-    max-width: 1120px;
+.customer-stores-card {
+    width: min(820px, 100%);
     margin: 0 auto;
+    padding: 30px 28px;
+    background: #fff;
+    border: 2px solid rgba(189,56,42,.14);
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 16px 45px rgba(16,24,40,.07);
 }
-.customer-stores-section .customer-stores-card {
-    box-sizing: border-box;
-    padding: 30px 34px !important;
-    border: 1px solid #f0deda !important;
-    border-radius: 18px !important;
-    background: #fff8f7 !important;
+.customer-stores-card .eyebrow {
+    margin-left: auto;
+    margin-right: auto;
 }
-.customer-stores-section .customer-stores-heading {
-    margin: 0 !important;
-    text-align: right !important;
+.customer-stores-card h2 {
+    margin: 10px 0 8px;
+    font-size: clamp(1.65rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: #182230;
 }
-.customer-stores-section .customer-stores-heading .eyebrow {
-    display: inline-block !important;
-    margin: 0 0 14px !important;
-    padding: 8px 16px !important;
-    border-radius: 999px;
-    background: #faeeec !important;
-    color: #bd382a !important;
-    font-size: 15px !important;
-    font-weight: 800 !important;
+.customer-stores-card p {
+    margin: 0 0 20px;
+    color: var(--muted);
+    line-height: 1.8;
 }
-.customer-stores-section .customer-stores-heading h2 {
-    margin: 0 0 10px !important;
-    color: #1b2432 !important;
-    font-size: clamp(23px, 2.5vw, 30px) !important;
-    line-height: 1.45 !important;
-    font-weight: 800 !important;
-}
-.customer-stores-section .customer-stores-heading p {
-    max-width: 780px;
-    margin: 0 0 20px !important;
-    color: #535b68 !important;
-    font-size: 17px !important;
-    line-height: 1.8 !important;
-}
-.customer-stores-section a.customer-stores-btn,
-.customer-stores-section a.customer-stores-btn:link,
-.customer-stores-section a.customer-stores-btn:visited {
-    display: inline-flex !important;
+.customer-stores-btn,
+.customer-stores-btn:link,
+.customer-stores-btn:visited {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    min-height: 46px;
-    box-sizing: border-box;
-    padding: 11px 22px !important;
-    border: 1px solid #bd382a !important;
-    border-radius: 10px !important;
-    background: #bd382a !important;
-    color: #fff !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    line-height: 1.4 !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-}
-.customer-stores-section a.customer-stores-btn:hover,
-.customer-stores-section a.customer-stores-btn:focus-visible {
-    background: #9f2d22 !important;
+    min-width: 260px;
+    padding: 15px 24px;
+    border-radius: 15px;
+    background: #29394d;
     color: #fff !important;
     text-decoration: none !important;
+    font-weight: 900;
+    box-shadow: 0 12px 28px rgba(41,57,77,.20);
+    transition: transform .2s ease, box-shadow .2s ease;
 }
-.customer-stores-section .customer-stores-btn span {
-    color: #fff !important;
-    font-size: 20px;
+.customer-stores-btn:hover,
+.customer-stores-btn:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(41,57,77,.25);
 }
-@media (max-width: 700px) {
-    .customer-stores-section { padding: 28px 16px !important; }
-    .customer-stores-section .customer-stores-card {
-        padding: 22px 20px !important;
-        border-radius: 15px !important;
-    }
-    .customer-stores-section .customer-stores-heading .eyebrow {
-        margin-bottom: 11px !important;
-        font-size: 14px !important;
-    }
-    .customer-stores-section .customer-stores-heading h2 {
-        font-size: 23px !important;
-        line-height: 1.5 !important;
-    }
-    .customer-stores-section .customer-stores-heading p {
-        margin-bottom: 17px !important;
-        font-size: 15px !important;
-        line-height: 1.8 !important;
-    }
-    .customer-stores-section a.customer-stores-btn {
-        min-height: 44px;
-        padding: 10px 16px !important;
-        font-size: 15px !important;
-    }
+.customer-stores-btn span { line-height: 1; }
+@media (max-width: 600px) {
+    .customer-stores-section { padding-top: 18px; padding-bottom: 18px; }
+    .customer-stores-card { padding: 24px 18px; border-radius: 20px; }
+    .customer-stores-btn { width: min(320px,100%); min-width: 0; }
 }
