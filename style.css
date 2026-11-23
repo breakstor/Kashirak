@@ -1156,9 +1156,18 @@ a { -webkit-tap-highlight-color: transparent; }
 .download-app-card .download-symbol { width: 44px; height: 44px; flex-basis: 44px; border-radius: 12px; background: rgba(255,255,255,.15); }
 .download-app-card .download-symbol-windows { flex-basis: 44px; }
 .download-app-card .download-symbol-android { flex-basis: 44px; }
+.download-app-remote .btn-download-big {
+    background: #26364d;
+    box-shadow: 0 12px 30px rgba(38, 54, 77, .18);
+}
+.download-app-remote .btn-download-big:hover {
+    background: #1a2535;
+    transform: scale(1.02);
+}
 .download-coming-soon { cursor: default; }
-.download-coming-soon:hover { transform: none; }
+.download-coming-soon:hover { transform: none !important; }
 .download-app-remote .download-coming-soon { background: #26364d; box-shadow: 0 12px 30px rgba(38,54,77,.15); }
+.download-app-remote .download-coming-soon:hover { background: #26364d; }
 
 /* Clean, balanced Android robot mark */
 .download-symbol-android { position: relative; width: 26px; height: 30px; flex: 0 0 44px; }
